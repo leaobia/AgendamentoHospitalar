@@ -17,7 +17,7 @@ public class TesteObjetos {
 
         Especialidade e1 = new Especialidade();
         e1.setNome("Cardiologia");
-        e1.setDescricao("coração bomba");
+        e1.setDescricao("Cuida dos corações doentes");
         
         EspecialidadeDAO.gravar(e1);
 

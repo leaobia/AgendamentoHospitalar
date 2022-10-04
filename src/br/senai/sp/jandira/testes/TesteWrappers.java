@@ -18,24 +18,24 @@ public class TesteWrappers {
 
         Especialidade e1 = new Especialidade("Cardiologia");
 //		e1.setNome("Cardiologia");
-        e1.setDescricao("coração bomba");
+        e1.setDescricao("Cuida do coração");
 
         Especialidade e2 = new Especialidade("Gastroenterologia");
 //		e2.setNome("Gastroenterologia");
-        e2.setDescricao("dor de barriga");
+        e2.setDescricao("Cuida da sua barriguinha");
 
         especialidades.add(e1);
         especialidades.add(e2);
 
         Especialidade e3 = new Especialidade();
         e3.setNome("Fisioterapia");
-        e3.setDescricao("dor nas costas");
+        e3.setDescricao("Cuida da sua dor nas costas");
 
         especialidades.add(e3);
 
         Especialidade e4 = new Especialidade();
         e4.setNome("Clinico Geral");
-        e4.setDescricao("de tudo um pouquinho");
+        e4.setDescricao("Sabe de tudo um pouquiho");
 
         //Especialidade[] especialidades = {e1, e2, e3, e4};
         Especialidade e5 = new Especialidade();
