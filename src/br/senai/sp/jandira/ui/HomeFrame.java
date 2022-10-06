@@ -4,6 +4,9 @@
  */
 package br.senai.sp.jandira.ui;
 
+import java.awt.Toolkit;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author 22282227
@@ -15,6 +18,8 @@ public class HomeFrame extends javax.swing.JFrame {
      */
     public HomeFrame() {
         initComponents();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/senai/sp/jandira/imagens/equipe-medica1.png")));
+        preencherTabela();
     }
 
     /**
@@ -43,6 +48,8 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonPlanoDeSaude = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de Agendamento");
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(158, 168, 250));
@@ -62,16 +69,15 @@ public class HomeFrame extends javax.swing.JFrame {
 
         buttonSair.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         buttonSair.setForeground(new java.awt.Color(255, 255, 255));
-        buttonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/logout32.png"))); // NOI18N
+        buttonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/Log-Outsair.png"))); // NOI18N
         buttonSair.setToolTipText("Sair do sistema");
-        buttonSair.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), null));
         buttonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSairActionPerformed(evt);
             }
         });
         getContentPane().add(buttonSair);
-        buttonSair.setBounds(720, 90, 50, 40);
+        buttonSair.setBounds(750, 90, 30, 40);
 
         buttonAgenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/Agenda.png"))); // NOI18N
         buttonAgenda.setToolTipText("Agenda");
@@ -128,6 +134,12 @@ public class HomeFrame extends javax.swing.JFrame {
             }
         ));
         scroolEspecialidades.setViewportView(tableEspecialidades);
+        if (tableEspecialidades.getColumnModel().getColumnCount() > 0) {
+            tableEspecialidades.getColumnModel().getColumn(0).setHeaderValue("Title 1");
+            tableEspecialidades.getColumnModel().getColumn(1).setHeaderValue("Title 2");
+            tableEspecialidades.getColumnModel().getColumn(2).setHeaderValue("Title 3");
+            tableEspecialidades.getColumnModel().getColumn(3).setHeaderValue("Title 4");
+        }
 
         jPanel2.add(scroolEspecialidades);
         scroolEspecialidades.setBounds(30, 40, 600, 210);
@@ -158,14 +170,15 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonAdicionarEspecialidade.setBounds(700, 260, 40, 30);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 170, 800, 300);
+        jPanel2.setBounds(30, 170, 750, 300);
 
         buttonPlanoDeSaude.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/plano-de-saude.png"))); // NOI18N
         buttonPlanoDeSaude.setToolTipText("Plano de saúde");
         getContentPane().add(buttonPlanoDeSaude);
         buttonPlanoDeSaude.setBounds(360, 90, 60, 39);
 
-        setBounds(0, 0, 816, 505);
+        setSize(new java.awt.Dimension(816, 505));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
@@ -196,41 +209,6 @@ public class HomeFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttobEditarEspecialidadeActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HomeFrame().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttobEditarEspecialidade;
     private javax.swing.JButton buttonAdicionarEspecialidade;
@@ -248,4 +226,21 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane scroolEspecialidades;
     private javax.swing.JTable tableEspecialidades;
     // End of variables declaration//GEN-END:variables
+   private void preencherTabela() {
+
+        String[][] dados = {
+            {"100", "Jandira",  "SP "},
+            {"200", "Itapevi",  "SP "},
+            {"300", "Jandira",  "SP "},
+            {"400", "Barueri",  "SP "},
+            {"500", "Curitiba", "PR "},
+            {"200", "Fortaleza","CE "},};
+
+        String[] titulos = {"CODIGO", "NOME DA CIDADE", "ESTADO"};
+
+        DefaultTableModel modelo = new DefaultTableModel(dados, titulos);
+        
+        tableEspecialidades.setModel(modelo);
+    }
+
 }
