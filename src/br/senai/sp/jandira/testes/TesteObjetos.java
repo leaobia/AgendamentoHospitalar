@@ -78,9 +78,9 @@ public class TesteObjetos {
             System.out.println(ee.getNome() + " - " + ee.getCodigo());
         }
 
-        System.out.println("-------------Busca-----------");
-        Especialidade procurada = EspecialidadeDAO.getEspecialidade(102);
-        System.out.println(procurada.getNome());
+        //System.out.println("-------------Busca-----------");
+       // Especialidade procurada = EspecialidadeDAO.getEspecialidade(102);
+        //System.out.println(procurada.getNome());
 
         System.out.println("------UPDATE------");
         Especialidade especialidadeAtualizada = new Especialidade();
