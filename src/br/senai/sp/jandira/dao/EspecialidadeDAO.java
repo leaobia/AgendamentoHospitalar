@@ -1,5 +1,4 @@
 package br.senai.sp.jandira.dao;
-
 import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.ui.EspecialidadesPanel;
 import java.util.ArrayList;
@@ -8,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
 public class EspecialidadeDAO {
 
     /*
-    Essa classe será responsável pela persistência de dados
+    Essa classe será responsável pela persistência de dados 
     das especialidades, por exemplo, adicionar uma nova especialidade,
     excluir uma especialidade, etc.
      */
@@ -70,20 +69,20 @@ public class EspecialidadeDAO {
     }
 
     public static DefaultTableModel getEspecialidadesModel() {
-        String[] titulos = { "CÓDIGO",  "NOME DA ESPECIALIDADE",  "DESCRIÇÃO"};
+        String[] titulos = {"CÓDIGO", "NOME DA ESPECIALIDADE", "DESCRIÇÃO"};
         String[][] dados = new String[especialidades.size()][3];
 
         int i = 0;
         for (Especialidade e : especialidades) {
             dados[i][0] = e.getCodigo().toString();
-            dados [i][2] = e.getDescricao();
-            dados [i][1] = e.getNome();
-            
-             i++;
+            dados[i][2] = e.getDescricao();
+            dados[i][1] = e.getNome();
+
+            i++;
         }
-         DefaultTableModel model = new DefaultTableModel(dados, titulos);
-         return model;
-         
+        DefaultTableModel model = new DefaultTableModel(dados, titulos);
+        return model;
+
     }
 
 }

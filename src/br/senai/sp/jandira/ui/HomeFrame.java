@@ -72,6 +72,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
         labelTitulo.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         labelTitulo.setText("Agenda de Consultas");
+        labelTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(labelTitulo);
         labelTitulo.setBounds(280, 20, 240, 32);
 
@@ -147,15 +148,15 @@ public class HomeFrame extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Suporte Técnico:");
         panelHome.add(jLabel3);
-        jLabel3.setBounds(590, 100, 160, 30);
+        jLabel3.setBounds(590, 100, 200, 30);
 
         jLabel5.setText("Email: sisa@gmail.com");
         panelHome.add(jLabel5);
-        jLabel5.setBounds(590, 140, 220, 16);
+        jLabel5.setBounds(590, 140, 200, 16);
 
         jLabel6.setText("Telefone: 4602-8922");
         panelHome.add(jLabel6);
-        jLabel6.setBounds(590, 160, 210, 16);
+        jLabel6.setBounds(590, 160, 200, 16);
 
         jLabel7.setText("Site: www.sisa.com.br");
         panelHome.add(jLabel7);
