@@ -6,6 +6,7 @@ package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.model.Especialidade;
+import java.awt.TextField;
 import java.awt.TrayIcon;
 import javax.swing.JOptionPane;
 
@@ -14,13 +15,23 @@ import javax.swing.JOptionPane;
  * @author 22282176
  */
 public class EspecialidadeDialog extends javax.swing.JDialog {
-
+    //Atributo
+    Especialidade especialidade;
     /**
      * Creates new form EspecialidadeDialog
      */
-    public EspecialidadeDialog(java.awt.Frame parent, boolean modal) {
+    public EspecialidadeDialog(java.awt.Frame parent, boolean modal, Especialidade e) {
         super(parent, modal);
         initComponents();
+         especialidade = e;
+         preencherFormulario();
+    }
+    
+
+     public EspecialidadeDialog(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        
     }
 
     /**
@@ -149,7 +160,13 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         setSize(new java.awt.Dimension(700, 479));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    private void preencherFormulario(){
+        TituloLabel.setText("ESPECIALIDADE - EDITAR ");
+         IconeLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/edit32.png"))); // NOI18N
+        jTextFieldCodigo.setText(especialidade.getCodigo().toString());
+        jTextFieldDescEsp.setText(especialidade.getDescricao());
+        jTextFieldNomeEspecialidade.setText(especialidade.getNome());
+    }
     private void jTextFieldCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCodigoActionPerformed
@@ -164,17 +181,19 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         // Criar um objeto especialidade
-               Especialidade especialidade = new Especialidade();
-               especialidade.setNome(jTextFieldNomeEspecialidade.getText());
-               especialidade.setDescricao(jTextFieldDescEsp.getText());
+               Especialidade novaEspecialidade = new Especialidade();
+               novaEspecialidade.setNome(jTextFieldNomeEspecialidade.getText());
+               novaEspecialidade.setDescricao(jTextFieldDescEsp.getText());
         // Gravar o objeto através do DAO
-        EspecialidadeDAO.gravar(especialidade);
+        EspecialidadeDAO.gravar(novaEspecialidade);
         
         JOptionPane.showMessageDialog(
                 this, 
                 "Especialidade gravada com sucesso!", 
                 "Especialiades",
                 JOptionPane.INFORMATION_MESSAGE);
+        
+        dispose();
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     /**

@@ -26,17 +26,47 @@ public class PacientesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        scroolEspecialidades = new javax.swing.JScrollPane();
-        tableEspecialidades = new javax.swing.JTable();
-        buttonExcluirEspecialidades = new javax.swing.JButton();
-        buttobEditarEspecialidade = new javax.swing.JButton();
-        buttonAdicionarEspecialidade = new javax.swing.JButton();
+        buttonExcluirPaciente = new javax.swing.JButton();
+        buttobEditarPaciente = new javax.swing.JButton();
+        buttonAdicionarPaciente = new javax.swing.JButton();
+        scroolPacientes = new javax.swing.JScrollPane();
+        tablePacientes = new javax.swing.JTable();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de Pacientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(153, 0, 153))); // NOI18N
-        setPreferredSize(new java.awt.Dimension(750, 300));
+        setPreferredSize(new java.awt.Dimension(785, 300));
         setLayout(null);
 
-        tableEspecialidades.setModel(new javax.swing.table.DefaultTableModel(
+        buttonExcluirPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/excluir.png"))); // NOI18N
+        buttonExcluirPaciente.setToolTipText("Excluir especialidade selecionada");
+        buttonExcluirPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonExcluirPacienteActionPerformed(evt);
+            }
+        });
+        add(buttonExcluirPaciente);
+        buttonExcluirPaciente.setBounds(600, 260, 40, 30);
+
+        buttobEditarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/edit32.png"))); // NOI18N
+        buttobEditarPaciente.setToolTipText("Editar  especialidade selecionada");
+        buttobEditarPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttobEditarPacienteActionPerformed(evt);
+            }
+        });
+        add(buttobEditarPaciente);
+        buttobEditarPaciente.setBounds(650, 260, 40, 30);
+
+        buttonAdicionarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/Button-Adicionar.png"))); // NOI18N
+        buttonAdicionarPaciente.setToolTipText("Editar nova Especialidade");
+        buttonAdicionarPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAdicionarPacienteActionPerformed(evt);
+            }
+        });
+        add(buttonAdicionarPaciente);
+        buttonAdicionarPaciente.setBounds(700, 260, 40, 30);
+
+        tablePacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -47,51 +77,38 @@ public class PacientesPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        scroolEspecialidades.setViewportView(tableEspecialidades);
+        scroolPacientes.setViewportView(tablePacientes);
 
-        add(scroolEspecialidades);
-        scroolEspecialidades.setBounds(30, 40, 600, 210);
-
-        buttonExcluirEspecialidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/excluir.png"))); // NOI18N
-        buttonExcluirEspecialidades.setToolTipText("Excluir especialidade selecionada");
-        buttonExcluirEspecialidades.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonExcluirEspecialidadesActionPerformed(evt);
-            }
-        });
-        add(buttonExcluirEspecialidades);
-        buttonExcluirEspecialidades.setBounds(600, 260, 40, 30);
-
-        buttobEditarEspecialidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/edit32.png"))); // NOI18N
-        buttobEditarEspecialidade.setToolTipText("Editar  especialidade selecionada");
-        buttobEditarEspecialidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttobEditarEspecialidadeActionPerformed(evt);
-            }
-        });
-        add(buttobEditarEspecialidade);
-        buttobEditarEspecialidade.setBounds(650, 260, 40, 30);
-
-        buttonAdicionarEspecialidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/Button-Adicionar.png"))); // NOI18N
-        buttonAdicionarEspecialidade.setToolTipText("Editar nova Especialidade");
-        add(buttonAdicionarEspecialidade);
-        buttonAdicionarEspecialidade.setBounds(700, 260, 40, 30);
+        add(scroolPacientes);
+        scroolPacientes.setBounds(30, 40, 680, 210);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonExcluirEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirEspecialidadesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonExcluirEspecialidadesActionPerformed
+    private void buttonExcluirPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirPacienteActionPerformed
 
-    private void buttobEditarEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttobEditarEspecialidadeActionPerformed
+      
+        
+
+    }//GEN-LAST:event_buttonExcluirPacienteActionPerformed
+
+    private void buttobEditarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttobEditarPacienteActionPerformed
+
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttobEditarEspecialidadeActionPerformed
+     
+    }//GEN-LAST:event_buttobEditarPacienteActionPerformed
+
+    private void buttonAdicionarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarPacienteActionPerformed
+
+      
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonAdicionarPacienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttobEditarEspecialidade;
-    private javax.swing.JButton buttonAdicionarEspecialidade;
-    private javax.swing.JButton buttonExcluirEspecialidades;
-    private javax.swing.JScrollPane scroolEspecialidades;
-    private javax.swing.JTable tableEspecialidades;
+    private javax.swing.JButton buttobEditarPaciente;
+    private javax.swing.JButton buttonAdicionarPaciente;
+    private javax.swing.JButton buttonExcluirPaciente;
+    private javax.swing.JScrollPane scroolPacientes;
+    private javax.swing.JTable tablePacientes;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
 package br.senai.sp.jandira.ui;
 
 import java.awt.Toolkit;
+import java.util.Locale;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -12,13 +13,16 @@ import javax.swing.table.DefaultTableModel;
  * @author 22282227
  */
 public class HomeFrame extends javax.swing.JFrame {
-
+    
+        private PacientesPanel pacientesPanel;
         private EspecialidadesPanel especialidadesPanel;
         private final int POS_X = 30;
         private final int POS_Y = 180;
         private final int POS_W = 750;
         private final int POS_H = 300;
-                
+        
+       
+    
     
     /**
      * Creates new form HomeFrame
@@ -211,6 +215,7 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonPacientes.setBackground(new java.awt.Color(255, 255, 255));
         buttonPlanoDeSaude.setBackground(new java.awt.Color(255, 255, 255));
         buttonAgenda.setBackground(new java.awt.Color(255, 105, 180));
+        pacientesPanel.setVisible(false);
     }//GEN-LAST:event_buttonAgendaActionPerformed
 
     private void buttonPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPacientesActionPerformed
@@ -222,6 +227,8 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonPacientes.setBackground(new java.awt.Color(255, 105, 180));
         buttonPlanoDeSaude.setBackground(new java.awt.Color(255, 255, 255));
         buttonAgenda.setBackground(new java.awt.Color(255, 255, 255));
+        pacientesPanel.setVisible(true);
+        
 // TODO add your handling code here:
     }//GEN-LAST:event_buttonPacientesActionPerformed
 
@@ -247,6 +254,7 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonPacientes.setBackground(new java.awt.Color(255, 255, 255));
         buttonPlanoDeSaude.setBackground(new java.awt.Color(255, 255, 255));
         buttonAgenda.setBackground(new java.awt.Color(255, 255, 255));
+        pacientesPanel.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonMedicosActionPerformed
 
@@ -259,6 +267,7 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonPacientes.setBackground(new java.awt.Color(255, 255, 255));
         buttonPlanoDeSaude.setBackground(new java.awt.Color(255, 105, 180));
         buttonAgenda.setBackground(new java.awt.Color(255, 255, 255));
+        pacientesPanel.setVisible(false);
 // TODO add your handling code here:
     }//GEN-LAST:event_buttonPlanoDeSaudeActionPerformed
 
@@ -271,6 +280,7 @@ public class HomeFrame extends javax.swing.JFrame {
         buttonAgenda.setBackground(new java.awt.Color(255, 255, 255));
         panelHome.setVisible(true);
         especialidadesPanel.setVisible(false);
+        pacientesPanel.setVisible(false);
 // TODO add your handling code here:
     }//GEN-LAST:event_buttonHomeActionPerformed
 
@@ -302,6 +312,10 @@ public class HomeFrame extends javax.swing.JFrame {
         getContentPane().add(especialidadesPanel);
         especialidadesPanel.setVisible(false);
         
+        pacientesPanel = new PacientesPanel();
+        pacientesPanel.setBounds(POS_X, POS_Y, POS_W, POS_H);
+        getContentPane().add(pacientesPanel);
+        pacientesPanel.setVisible(false);
     }
 
 }
