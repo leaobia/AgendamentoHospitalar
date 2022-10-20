@@ -6,6 +6,7 @@ package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.model.Especialidade;
+import br.senai.sp.jandira.model.OperacaoEnum;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -141,7 +142,10 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
         if (getLinha() != -1) {
             editarEspecialidade();
         } else {
-            JOptionPane.showMessageDialog(this, "Por favor, selecione a especialidade que deseja editar", "ATENÇÃO!", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, 
+                    "Por favor, selecione a especialidade que deseja editar", 
+                    "ATENÇÃO!", 
+                    JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_buttobEditarEspecialidadeActionPerformed
@@ -149,14 +153,14 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
       private void editarEspecialidade() {
           Especialidade especialidade = EspecialidadeDAO.getEspecialidade(getCodigo());
           
-        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true, especialidade);
+        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true, especialidade, OperacaoEnum.EDITAR);
         especialidadeDialog.setVisible(true);
         preencherTabela();
         
     }        
     private void buttonAdicionarEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarEspecialidadeActionPerformed
 
-        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true);
+        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true, OperacaoEnum.ADICIONAR);
         especialidadeDialog.setVisible(true);
         preencherTabela();
 
