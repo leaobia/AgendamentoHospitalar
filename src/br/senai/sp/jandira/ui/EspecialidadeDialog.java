@@ -93,7 +93,7 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         panelBaixo.setLayout(null);
 
         jPanelContent.setBackground(new java.awt.Color(204, 204, 255));
-        jPanelContent.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalhes de Especialidade", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18), new java.awt.Color(153, 0, 153))); // NOI18N
+        jPanelContent.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalhes de Especialidade", 0, 0, new java.awt.Font("Segoe UI", 0, 18), new java.awt.Color(153, 0, 153))); // NOI18N
         jPanelContent.setForeground(new java.awt.Color(255, 255, 255));
         jPanelContent.setLayout(null);
 
@@ -104,7 +104,7 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
 
         jTextFieldCodigo.setEditable(false);
         jTextFieldCodigo.setBackground(new java.awt.Color(255, 204, 204));
-        jTextFieldCodigo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextFieldCodigo.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         jPanelContent.add(jTextFieldCodigo);
         jTextFieldCodigo.setBounds(10, 90, 120, 50);
 
@@ -113,7 +113,7 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         jPanelContent.add(jLabelNomeEspecialidade);
         jLabelNomeEspecialidade.setBounds(10, 150, 280, 40);
 
-        jTextFieldNomeEspecialidade.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextFieldNomeEspecialidade.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         jPanelContent.add(jTextFieldNomeEspecialidade);
         jTextFieldNomeEspecialidade.setBounds(10, 210, 360, 40);
 
@@ -122,14 +122,14 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         jPanelContent.add(jLabelDescEsp);
         jLabelDescEsp.setBounds(10, 270, 280, 30);
 
-        jTextFieldDescEsp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextFieldDescEsp.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         jPanelContent.add(jTextFieldDescEsp);
         jTextFieldDescEsp.setBounds(10, 320, 360, 40);
 
         jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/cancelar.png"))); // NOI18N
         jButtonCancelar.setToolTipText("Cancelar");
         jButtonCancelar.setBorder(null);
-        jButtonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);
@@ -141,7 +141,7 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         jButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/diskette.png"))); // NOI18N
         jButtonSalvar.setToolTipText("Salvar");
         jButtonSalvar.setBorder(null);
-        jButtonSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalvarActionPerformed(evt);

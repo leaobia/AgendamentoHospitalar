@@ -10,7 +10,7 @@ public class PlanoDeSaude {
     private String operadora;
     private String categoria;
     private String numero;
-    private LocalDate Validade;
+    private LocalDate validade;
     private static int quantidade; //1 porque cada objeto tem sua própria quantidade
 //	private int quantidade; //3 
 
@@ -26,9 +26,15 @@ public class PlanoDeSaude {
         this.categoria = categoria;
         this.quantidade++;
         gerarCodigo();
-
     }
-
+        public PlanoDeSaude(String operadora, String categoria, LocalDate validade) {
+        this.operadora = operadora;
+        this.categoria = categoria;
+        this.validade = validade;
+        this.quantidade++;
+        gerarCodigo();
+    }
+    
     public PlanoDeSaude() {
         this.quantidade++;
         gerarCodigo();
@@ -60,11 +66,11 @@ public class PlanoDeSaude {
     }
 
     public void setValidade(LocalDate validade) {
-        Validade = validade;
+        this.validade = validade;
     }
 
     public LocalDate getValidade() {
-        return Validade;
+        return validade;
     }
 
     //não é necessario o set porque ele vai usar o Plano de saude
@@ -91,6 +97,8 @@ public class PlanoDeSaude {
     public Integer getCodigo() {
         return codigo;
     }
+
+
 
 
 }

@@ -6,6 +6,8 @@ package br.senai.sp.jandira.dao;
 
 
 import br.senai.sp.jandira.model.PlanoDeSaude;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,7 +22,7 @@ public class PlanoDeSaudeDAO {
         planoDeSaude.add(e);
     }
 
-    public static ArrayList<PlanoDeSaude> getEspecialidades() { //READ
+    public static ArrayList<PlanoDeSaude> getPlanos() { //READ
         return planoDeSaude;
     }
 
@@ -53,10 +55,10 @@ public class PlanoDeSaudeDAO {
     }
        public static void criarListaDePlanos() {
         
-        PlanoDeSaude e1 = new PlanoDeSaude("Animed", "Prata");
-        PlanoDeSaude e2 = new PlanoDeSaude("Notredame", "bronze");
-        PlanoDeSaude e3 = new PlanoDeSaude("Amil", "Ouro");
-        PlanoDeSaude e4 = new PlanoDeSaude("Bradesco Saúde", "Diamantes");
+        PlanoDeSaude e1 = new PlanoDeSaude("Animed", "Prata", LocalDate.of(2025, 8, 17));
+        PlanoDeSaude e2 = new PlanoDeSaude("Notredame", "bronze", LocalDate.of(2028, 5, 12));
+        PlanoDeSaude e3 = new PlanoDeSaude("Amil", "Ouro", LocalDate.of(2028, 2, 10));
+        PlanoDeSaude e4 = new PlanoDeSaude("Bradesco Saúde", "Diamantes", LocalDate.of(2023, 3, 1));
        
  
         planoDeSaude.add(e1);
@@ -66,14 +68,17 @@ public class PlanoDeSaudeDAO {
     }
 
     public static DefaultTableModel getPlanosModel() {
-        String[] titulos = {"CÓDIGO", "NOME DO PLANO", "CATEGORIA"};
-        String[][] dados = new String[planoDeSaude.size()][3];
+        String[] titulos = {"CÓDIGO", "NOME DO PLANO", "CATEGORIA", "VALIDADE"};
+        String[][] dados = new String[planoDeSaude.size()][4];
+        
+        System.out.println("************* " + planoDeSaude.size());
 
         int i = 0;
         for (PlanoDeSaude e : planoDeSaude) {
             dados[i][0] = e.getCodigo().toString();
             dados[i][2] = e.getOperadora();
             dados[i][1] = e.getCategoria();
+            dados[i][3] = e.getValidade().toString();
 
             i++;
         }

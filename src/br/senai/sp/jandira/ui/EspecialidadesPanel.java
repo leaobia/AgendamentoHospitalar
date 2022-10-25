@@ -151,7 +151,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_buttobEditarEspecialidadeActionPerformed
 
       private void editarEspecialidade() {
-          Especialidade especialidade = EspecialidadeDAO.getEspecialidade(getCodigo());
+        Especialidade especialidade = EspecialidadeDAO.getEspecialidade(getCodigo());
           
         EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true, especialidade, OperacaoEnum.EDITAR);
         especialidadeDialog.setVisible(true);
