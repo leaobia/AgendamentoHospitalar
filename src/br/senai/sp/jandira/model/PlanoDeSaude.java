@@ -27,9 +27,10 @@ public class PlanoDeSaude {
         this.quantidade++;
         gerarCodigo();
     }
-        public PlanoDeSaude(String operadora, String categoria, LocalDate validade) {
+        public PlanoDeSaude(String operadora, String categoria, LocalDate validade, String numero) {
         this.operadora = operadora;
         this.categoria = categoria;
+        this.numero = numero;
         this.validade = validade;
         this.quantidade++;
         gerarCodigo();
