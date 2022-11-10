@@ -24,7 +24,13 @@ public class Especialidade {
         this.contador++;
         this.codigo = contador;
     }
-
+        public Especialidade(String nome, String descricao, Integer codigo) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.codigo = codigo;
+        this.contador = codigo;
+        
+    }
     public Especialidade() { //Contrutor Default (padrão)
         gerarCodigo();
 //      JOptionPane.showMessageDialog(null, "Utilizando o construtor default!!");
@@ -51,11 +57,9 @@ public class Especialidade {
     }
 
     public void setNome(String nome) {
-        if (nome.length() >= 3) {
+     
             this.nome = nome;
-        } else {
-            JOptionPane.showMessageDialog(null, nome + " não é um nome valido!\nDeve conter pelo menos 3 letras!");
-        }
+    
     }
 
     public String getNome() {
@@ -63,16 +67,16 @@ public class Especialidade {
     }
 
     public void setDescricao(String descricao) {
-        if (descricao.length() >= 10) {
+        
             this.descricao = descricao;
-        } else {
-            JOptionPane.showMessageDialog(null, descricao + " A Descrição deve conter pelo menos 10 letras!");
-        }
+     
 
     }
 
     public String getDescricao() {
         return descricao;
     }
-
+    public String getEspecialidadeSeparadaPorPontoEVirgula(){
+            return this.codigo + ";" + this.nome + ";" + this.descricao ;
+            }
 }

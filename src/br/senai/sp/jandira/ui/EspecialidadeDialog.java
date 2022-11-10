@@ -156,7 +156,7 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         getContentPane().add(panelBaixo);
         panelBaixo.setBounds(0, 50, 690, 420);
 
-        setSize(new java.awt.Dimension(700, 476));
+        setSize(new java.awt.Dimension(700, 507));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     private void preencherFormulario(){
