@@ -84,15 +84,38 @@ public class PlanoDeSaudeDAO {
  
 
     public static void criarListaDePlanos() {
-        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//        try {
-//            BufferedReader leitor = Files.newBufferedReader(PATH);
-//            String linha = leitor.readLine();
-//             while (linha != null){
-//                String [] vetor = linha.split(";");
-//                PlanoDeSaude e = new PlanoDeSaude(vetor [2], vetor[3],LocalDate.parse(vetor[4], formatador), vetor[1], Integer.valueOf(vetor[0]));}
-//        } catch (IOException e) {
-//        }
+       // DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+       try {
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+            String linha = leitor.readLine();
+            
+            while(linha != null){
+                // transformar os dados da linha em especialidade
+                //DateTimeFormatter barra = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                String[]vetor = linha.split(";");
+               
+                String[] data = vetor[3].split("-");
+                       
+                PlanoDeSaude e;
+                e = new PlanoDeSaude(
+                        vetor[1],
+                        vetor[2],
+                        LocalDate.of(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2])),
+                        vetor[4],
+                        Integer.valueOf(vetor[0]));
+                
+     
+                // Guardar na lista de especialidades
+                planoDeSaude.add(e);
+                
+                //ler a proxima linha 
+                linha = leitor.readLine();
+                
+            }
+        } catch (IOException error) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao ler o arquivo");
+        }
+        
 
 
     }
