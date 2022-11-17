@@ -1,9 +1,9 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
-import br.senai.sp.jandira.ui.EspecialidadesPanel;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,7 +16,9 @@ import javax.swing.table.DefaultTableModel;
 public class EspecialidadeDAO {
 
     private final static String URL = "C:\\Users\\22282176\\JAVA ARQUIVO\\Especialidade.txt";
+    private final static String URL_TEMP = "C:\\Users\\22282176\\JAVA ARQUIVO\\Especialidade-temp.txt";
     private final static Path PATH = Paths.get(URL);
+    private final static Path PATH_TEMP = Paths.get(URL_TEMP);
     /*
     Essa classe será responsável pela persistência de dados 
     das especialidades, por exemplo, adicionar uma nova especialidade,
@@ -40,6 +42,7 @@ public class EspecialidadeDAO {
             JOptionPane.showMessageDialog(null, "ocorreu um erro");
         }
     }
+
     public static ArrayList<Especialidade> getEspecialidades() { //READ
         return especialidades;
     }
@@ -56,46 +59,98 @@ public class EspecialidadeDAO {
 
     public static void atualizar(Especialidade especialidadeAtualizada) { //UPDATE
         for (Especialidade e : especialidades) {
-            if (e.getCodigo() == especialidadeAtualizada.getCodigo()) {
+            if (e.getCodigo().equals(especialidadeAtualizada.getCodigo())){
                 especialidades.set(especialidades.indexOf(e), especialidadeAtualizada);
                 break;
             }
         }
-
+        
+        atualizarArquivo();
     }
 
     //instancia de um objeto
     public static void excluir(Integer codigo) { //DELETE
+
         for (Especialidade e : especialidades) {
-            if (e.getCodigo() == codigo) {
+            if (e.getCodigo().equals(codigo)) {
                 especialidades.remove(e);
                 break;
             }
         }
+        
+        atualizarArquivo();
+
     }
 
+  private static void atualizarArquivo() {
+
+        //PASSO 01 - Criar representação dos arquivos que serão manipulados
+        File arquivoAtual = new File(URL);
+        File arquivoTemp = new File(URL_TEMP);
+
+        try {
+            //Criar o arquivo temporário
+            arquivoTemp.createNewFile();
+
+            //Abrir o arquivo temporário para escrita
+            BufferedWriter bwTemp = Files.newBufferedWriter(
+                    PATH_TEMP,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+
+            /* Iterar (loop) na lista para adicionar as especialidades no arquivo
+            temporário, exceto o registro que não queremos mais */
+            for(Especialidade e : especialidades){
+                bwTemp.write(e.getEspecialidadeSeparadaPorPontoEVirgula());
+                bwTemp.newLine();
+            }
+            
+            bwTemp.close();
+
+						//Excluir o arquivo atual
+            arquivoAtual.delete();
+            
+            //Renomear o arquivo temporário
+            arquivoTemp.renameTo(arquivoAtual);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+    
+
     //Criar uma lista de espeialidades
-    public static void criarListaDeEspecialidade() {
+    public static void criarListaDeEspecialidades() {
+
         try {
             BufferedReader leitor = Files.newBufferedReader(PATH);
+
             String linha = leitor.readLine();
-            while (linha != null){
-                // Transformar dados da linha em uma especialidade
-                String [] vetor = linha.split(";");
-                Especialidade e = new Especialidade(vetor[1], 
-                        vetor[2], 
+
+            while (linha != null) {
+                // Transformar os dados da linha em uma especialidade
+                String[] vetor = linha.split(";");
+                Especialidade e = new Especialidade(
+                        vetor[1],
+                        vetor[2],
                         Integer.valueOf(vetor[0]));
-                
+
                 // Guardar a especialidade na lista
                 especialidades.add(e);
-                // ler a próxima linha
+
+                // Ler a próxima linha 
                 linha = leitor.readLine();
             }
+
             leitor.close();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Ocorreu erro ao ler o arquivo");
-        }}
-        
+
+        } catch (IOException error) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro.");
+        }
+
+    }
+
 
     public static DefaultTableModel getEspecialidadesModel() {
         String[] titulos = {"CÓDIGO", "NOME DA ESPECIALIDADE", "DESCRIÇÃO"};

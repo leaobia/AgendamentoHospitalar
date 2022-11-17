@@ -8,6 +8,7 @@ import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.PlanoDeSaude;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,7 +29,9 @@ import javax.swing.table.DefaultTableModel;
 public class PlanoDeSaudeDAO {
 
     private final static String URL = "C:\\Users\\22282176\\JAVA ARQUIVO\\PlanoDeSaude.txt";
+    private final static String URL_TEMP = "C:\\Users\\22282176\\JAVA ARQUIVO\\PlanoDeSaude-temp.txt";
     private final static Path PATH = Paths.get(URL);
+    private final static Path PATH_TEMP = Paths.get(URL_TEMP);
 
     private static ArrayList<PlanoDeSaude> planoDeSaude = new ArrayList<>();
 
@@ -62,23 +65,61 @@ public class PlanoDeSaudeDAO {
         return null;
     }
 
-    public static void atualizar(PlanoDeSaude planoAtualizado) { //UPDATE
-        for (PlanoDeSaude e : planoDeSaude) {
-            if (e.getCodigo() == planoAtualizado.getCodigo()) {
-                planoDeSaude.set(planoDeSaude.indexOf(e), planoAtualizado);
-                break;
+   private static void atualizarArquivo() {
+
+        //PASSO 01 - Criar representação dos arquivos que serão manipulados
+        File arquivoAtual = new File(URL);
+        File arquivoTemp = new File(URL_TEMP);
+
+        try {
+            //Criar o arquivo temporário
+            arquivoTemp.createNewFile();
+
+            //Abrir o arquivo temporário para escrita
+            BufferedWriter bwTemp = Files.newBufferedWriter(
+                    PATH_TEMP,
+                    StandardOpenOption.APPEND,
+                    StandardOpenOption.WRITE);
+
+            /* Iterar (loop) na lista para adicionar as especialidades no arquivo
+            temporário, exceto o registro que não queremos mais */
+            for(PlanoDeSaude e : planoDeSaude){
+                bwTemp.write(e.getPlanoDeSaudeSeparadoPorPontoEVirgula());
+                bwTemp.newLine();
             }
+            
+            bwTemp.close();
+
+						//Excluir o arquivo atual
+            //arquivoAtual.delete();
+            
+            //Renomear o arquivo temporário
+            //arquivoTemp.renameTo(arquivoAtual);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
 
     }
-
     public static void excluir(Integer codigo) { //DELETE
         for (PlanoDeSaude e : planoDeSaude) {
-            if (e.getCodigo() == codigo) {
+            if (e.getCodigo().equals(codigo)) {
                 planoDeSaude.remove(e);
                 break;
             }
+            atualizarArquivo();
         }
+    }
+
+     public static void atualizar(PlanoDeSaude planoAtualizado) { //UPDATE
+        for (PlanoDeSaude e : planoDeSaude) {
+            if (e.getCodigo().equals(planoAtualizado.getCodigo())) {
+                planoDeSaude.set(planoDeSaude.indexOf(e), planoAtualizado);
+                break;
+            }
+            atualizarArquivo();
+        }
+
     }
 
  
@@ -94,7 +135,7 @@ public class PlanoDeSaudeDAO {
                 //DateTimeFormatter barra = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 String[]vetor = linha.split(";");
                
-                String[] data = vetor[3].split("-");
+                String[] data = vetor[4].split("-");
                        
                 PlanoDeSaude e;
                 e = new PlanoDeSaude(

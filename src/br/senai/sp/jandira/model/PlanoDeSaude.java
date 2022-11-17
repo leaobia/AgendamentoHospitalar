@@ -113,4 +113,5 @@ public class PlanoDeSaude {
         return this.codigo + ";" + this.operadora + ";" + this.categoria + ";" + this.numero + ";" + this.validade;
     }
 
+
 }

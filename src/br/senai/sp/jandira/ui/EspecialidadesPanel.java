@@ -24,7 +24,7 @@ public class EspecialidadesPanel extends javax.swing.JPanel {
      */
     public EspecialidadesPanel() {
         initComponents();
-        EspecialidadeDAO.criarListaDeEspecialidade();
+        EspecialidadeDAO.criarListaDeEspecialidades();
         preencherTabela();
 
     }
