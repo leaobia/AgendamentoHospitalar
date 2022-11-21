@@ -50,6 +50,7 @@ public class MedicoPanel extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(750, 300));
         setPreferredSize(new java.awt.Dimension(750, 300));
+        setLayout(null);
 
         tableMedicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -64,6 +65,9 @@ public class MedicoPanel extends javax.swing.JPanel {
         ));
         scroolMedicos.setViewportView(tableMedicos);
 
+        add(scroolMedicos);
+        scroolMedicos.setBounds(20, 25, 680, 210);
+
         buttonExcluirMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/excluir.png"))); // NOI18N
         buttonExcluirMedicos.setToolTipText("Excluir especialidade selecionada");
         buttonExcluirMedicos.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +75,8 @@ public class MedicoPanel extends javax.swing.JPanel {
                 buttonExcluirMedicosActionPerformed(evt);
             }
         });
+        add(buttonExcluirMedicos);
+        buttonExcluirMedicos.setBounds(590, 245, 40, 30);
 
         buttobEditarMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/edit32.png"))); // NOI18N
         buttobEditarMedicos.setToolTipText("Editar  especialidade selecionada");
@@ -79,6 +85,8 @@ public class MedicoPanel extends javax.swing.JPanel {
                 buttobEditarMedicosActionPerformed(evt);
             }
         });
+        add(buttobEditarMedicos);
+        buttobEditarMedicos.setBounds(640, 245, 40, 30);
 
         buttonAdicionarMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/Button-Adicionar.png"))); // NOI18N
         buttonAdicionarMedicos.setToolTipText("Editar nova Especialidade");
@@ -87,40 +95,8 @@ public class MedicoPanel extends javax.swing.JPanel {
                 buttonAdicionarMedicosActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(scroolMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(570, 570, 570)
-                            .addComponent(buttonExcluirMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(buttobEditarMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(buttonAdicionarMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(scroolMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(10, 10, 10)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(buttonExcluirMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(buttobEditarMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(buttonAdicionarMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        add(buttonAdicionarMedicos);
+        buttonAdicionarMedicos.setBounds(690, 245, 40, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonExcluirMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirMedicosActionPerformed

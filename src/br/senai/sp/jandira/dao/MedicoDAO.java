@@ -5,7 +5,6 @@
 package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Medico;
-import br.senai.sp.jandira.model.PlanoDeSaude;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -14,8 +13,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -32,7 +29,7 @@ public class MedicoDAO {
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);
 
     private static ArrayList<Medico> medicos = new ArrayList<>();
-    
+
     public static void gravar(Medico e) { //CREATE
         medicos.add(e);
         // GRAVAR EM ARQUIVO
@@ -63,7 +60,7 @@ public class MedicoDAO {
         return null;
     }
 
-   private static void atualizarArquivo() {
+    private static void atualizarArquivo() {
 
         //PASSO 01 - Criar representação dos arquivos que serão manipulados
         File arquivoAtual = new File(URL);
@@ -81,16 +78,16 @@ public class MedicoDAO {
 
             /* Iterar (loop) na lista para adicionar as especialidades no arquivo
             temporário, exceto o registro que não queremos mais */
-            for(Medico e : medicos){
+            for (Medico e : medicos) {
                 bwTemp.write(e.getMedicoSeparadoPorPontoEVirgula());
                 bwTemp.newLine();
             }
-            
+
             bwTemp.close();
 
-						//Excluir o arquivo atual
+            //Excluir o arquivo atual
             arquivoAtual.delete();
-            
+
             //Renomear o arquivo temporário
             arquivoTemp.renameTo(arquivoAtual);
 
@@ -99,6 +96,7 @@ public class MedicoDAO {
         }
 
     }
+
     public static void excluir(Integer codigo) { //DELETE
         for (Medico e : medicos) {
             if (e.getCodigo().equals(codigo)) {
@@ -109,7 +107,7 @@ public class MedicoDAO {
         }
     }
 
-     public static void atualizar(Medico medicoAtualizado) { //UPDATE
+    public static void atualizar(Medico medicoAtualizado) { //UPDATE
         for (Medico e : medicos) {
             if (e.getCodigo().equals(medicoAtualizado.getCodigo())) {
                 medicos.set(medicos.indexOf(e), medicoAtualizado);
@@ -120,43 +118,34 @@ public class MedicoDAO {
 
     }
 
- 
-
     public static void criarListaDeMedicos() {
-       // DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-       try {
+        // DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        try {
             BufferedReader leitor = Files.newBufferedReader(PATH);
             String linha = leitor.readLine();
-            
-            while(linha != null){
+
+            while (linha != null) {
                 // transformar os dados da linha em especialidade
                 //DateTimeFormatter barra = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                String[]vetor = linha.split(";");
-               
+                String[] vetor = linha.split(";");
+
                 Medico e;
                 e = new Medico(
                         Integer.valueOf(vetor[0]),
                         vetor[1],
                         vetor[2],
                         vetor[3]);
-                                
-                     
-                
-
-                               
 
                 // Guardar na lista de especialidades
                 medicos.add(e);
-                
+
                 //ler a proxima linha 
                 linha = leitor.readLine();
-                
+
             }
         } catch (IOException error) {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao ler o arquivo");
         }
-        
-
 
     }
 
