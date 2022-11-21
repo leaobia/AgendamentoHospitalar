@@ -90,7 +90,20 @@ public class Medico {
         this.codigo = contador;
 
     }
-    public String getMedicoSeparadaPorPontoEVirgula() {
+
+    //metodos de acesso aos atributos
+    public int getContador() {
+        return contador;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
+
+    public Integer getCodigo() {
+        return codigo;
+    }
+    public String getMedicoSeparadoPorPontoEVirgula() {
         return this.codigo + ";" + this.crm + ";" + this.nome + ";"
                 + this.telefone + ";" + this.email + ";"
                 + this.dataDeNascimento + ";" + this.especialidades;
