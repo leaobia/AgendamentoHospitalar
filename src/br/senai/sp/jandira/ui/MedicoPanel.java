@@ -6,6 +6,7 @@ package br.senai.sp.jandira.ui;
 
 
 import br.senai.sp.jandira.dao.MedicoDAO;
+import br.senai.sp.jandira.model.OperacaoEnum;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
@@ -126,9 +127,9 @@ public class MedicoPanel extends javax.swing.JPanel {
 
     private void buttonAdicionarMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarMedicosActionPerformed
 
-//        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true, OperacaoEnum.ADICIONAR);
-//        especialidadeDialog.setVisible(true);
-//        preencherTabela();
+       MedicoDialog medicoDialog = new MedicoDialog(null, true, OperacaoEnum.ADICIONAR);
+        medicoDialog.setVisible(true);
+        preencherTabela();
 
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonAdicionarMedicosActionPerformed
