@@ -91,10 +91,10 @@ public class PlanoDeSaudeDAO {
             bwTemp.close();
 
 						//Excluir o arquivo atual
-            //arquivoAtual.delete();
+            arquivoAtual.delete();
             
             //Renomear o arquivo temporário
-            //arquivoTemp.renameTo(arquivoAtual);
+            arquivoTemp.renameTo(arquivoAtual);
 
         } catch (Exception ex) {
             ex.printStackTrace();
