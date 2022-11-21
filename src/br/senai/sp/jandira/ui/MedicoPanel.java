@@ -4,19 +4,35 @@
  */
 package br.senai.sp.jandira.ui;
 
+
+import br.senai.sp.jandira.dao.MedicoDAO;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 /**
  *
  * @author 22282176
  */
 public class MedicoPanel extends javax.swing.JPanel {
-
+     private int linha;
     /**
      * Creates new form MedicoPanel
      */
     public MedicoPanel() {
         initComponents();
+        preencherTabela();
+        ajustarTabela();
     }
-
+        private int getLinha() {
+        linha = tableMedicos.getSelectedRow();
+        return linha;
+    }
+    
+    private Integer getCodigo(){
+          String codigoStr = tableMedicos.getValueAt(getLinha(), 0).toString();
+            Integer codigo = Integer.valueOf(codigoStr);
+            return codigo;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +42,151 @@ public class MedicoPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        scroolMedicos = new javax.swing.JScrollPane();
+        tableMedicos = new javax.swing.JTable();
+        buttonExcluirMedicos = new javax.swing.JButton();
+        buttobEditarMedicos = new javax.swing.JButton();
+        buttonAdicionarMedicos = new javax.swing.JButton();
+
+        setMaximumSize(new java.awt.Dimension(750, 300));
+        setPreferredSize(new java.awt.Dimension(750, 300));
+
+        tableMedicos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        scroolMedicos.setViewportView(tableMedicos);
+
+        buttonExcluirMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/excluir.png"))); // NOI18N
+        buttonExcluirMedicos.setToolTipText("Excluir especialidade selecionada");
+        buttonExcluirMedicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonExcluirMedicosActionPerformed(evt);
+            }
+        });
+
+        buttobEditarMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/edit32.png"))); // NOI18N
+        buttobEditarMedicos.setToolTipText("Editar  especialidade selecionada");
+        buttobEditarMedicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttobEditarMedicosActionPerformed(evt);
+            }
+        });
+
+        buttonAdicionarMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/Button-Adicionar.png"))); // NOI18N
+        buttonAdicionarMedicos.setToolTipText("Editar nova Especialidade");
+        buttonAdicionarMedicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAdicionarMedicosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(scroolMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(570, 570, 570)
+                            .addComponent(buttonExcluirMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(10, 10, 10)
+                            .addComponent(buttobEditarMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(10, 10, 10)
+                            .addComponent(buttonAdicionarMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(scroolMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(10, 10, 10)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(buttonExcluirMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttobEditarMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonAdicionarMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buttonExcluirMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirMedicosActionPerformed
+
+        System.out.println(linha
+        );
+        if (getLinha() != -1) {
+            //excluirMedico();
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, selecione o médico que deseja excluir", "ATENÇÃO!", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_buttonExcluirMedicosActionPerformed
+
+    private void buttobEditarMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttobEditarMedicosActionPerformed
+
+        // TODO add your handling code here:
+        if (getLinha() != -1) {
+           // editarMedico();
+        } else {
+            JOptionPane.showMessageDialog(this,
+                "Por favor, selecione o médico que deseja editar",
+                "ATENÇÃO!",
+                JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_buttobEditarMedicosActionPerformed
+
+    private void buttonAdicionarMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarMedicosActionPerformed
+
+//        EspecialidadeDialog especialidadeDialog = new EspecialidadeDialog(null, true, OperacaoEnum.ADICIONAR);
+//        especialidadeDialog.setVisible(true);
+//        preencherTabela();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonAdicionarMedicosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttobEditarMedicos;
+    private javax.swing.JButton buttonAdicionarMedicos;
+    private javax.swing.JButton buttonExcluirMedicos;
+    private javax.swing.JScrollPane scroolMedicos;
+    private javax.swing.JTable tableMedicos;
     // End of variables declaration//GEN-END:variables
+     private void preencherTabela() {
+
+
+        tableMedicos.setModel(MedicoDAO.getMedicoModel());
+        ajustarTabela();
+
+        tableMedicos.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+    }
+
+    private void ajustarTabela() {
+        // Impedir que o usuário ajuste as colunas
+        tableMedicos.getTableHeader().setReorderingAllowed(false);
+        // Bloquear a edição das celulas da tabela
+
+        tableMedicos.setDefaultEditor(Object.class, null);
+        // Definir largura coluna
+        tableMedicos.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tableMedicos.getColumnModel().getColumn(0).setPreferredWidth(60);
+        tableMedicos.getColumnModel().getColumn(1).setPreferredWidth(145);
+        tableMedicos.getColumnModel().getColumn(2).setPreferredWidth(236);
+        tableMedicos.getColumnModel().getColumn(3).setPreferredWidth(236);
+
+    }
+
 }

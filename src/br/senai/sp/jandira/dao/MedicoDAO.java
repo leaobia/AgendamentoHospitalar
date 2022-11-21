@@ -161,7 +161,7 @@ public class MedicoDAO {
     }
 
     public static DefaultTableModel getMedicoModel() {
-        String[] titulos = {"CÓDIGO", "CRM", "NOME DO CÓDIGO", "TELEFONE"};;;
+        String[] titulos = {"CÓDIGO", "CRM", "NOME DO MÉDICO", "TELEFONE"};;;
         String[][] dados = new String[medicos.size()][4];
 
         System.out.println("************* " + medicos.size());
