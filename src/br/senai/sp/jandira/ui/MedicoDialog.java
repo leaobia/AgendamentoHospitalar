@@ -4,9 +4,13 @@
  */
 package br.senai.sp.jandira.ui;
 
+import br.senai.sp.jandira.dao.MedicoDAO;
 import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.Medico;
 import br.senai.sp.jandira.model.OperacaoEnum;
+import br.senai.sp.jandira.model.PlanoDeSaude;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,7 +63,7 @@ public class MedicoDialog extends javax.swing.JDialog {
         jTextFieldDataNasc = new javax.swing.JFormattedTextField();
         jLabelDataNasc = new javax.swing.JLabel();
         jTextFieldCRM = new javax.swing.JTextField();
-        jTextFieldNomePaciente2 = new javax.swing.JTextField();
+        jTextFieldNomeMedico = new javax.swing.JTextField();
         jTextFieldTelefone = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListEspecialidesDoMedico = new javax.swing.JList<>();
@@ -171,14 +175,14 @@ public class MedicoDialog extends javax.swing.JDialog {
         jPanelContent.add(jTextFieldCRM);
         jTextFieldCRM.setBounds(130, 90, 90, 30);
 
-        jTextFieldNomePaciente2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextFieldNomePaciente2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNomeMedico.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextFieldNomeMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNomePaciente2ActionPerformed(evt);
+                jTextFieldNomeMedicoActionPerformed(evt);
             }
         });
-        jPanelContent.add(jTextFieldNomePaciente2);
-        jTextFieldNomePaciente2.setBounds(240, 90, 360, 30);
+        jPanelContent.add(jTextFieldNomeMedico);
+        jTextFieldNomeMedico.setBounds(240, 90, 360, 30);
 
         jTextFieldTelefone.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTextFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
@@ -264,15 +268,52 @@ public class MedicoDialog extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+         private void preencherFormulario() {
+        // NOI18N
 
+        jTextFieldCRM.setText(medico.getCrm().toString());
+        jTextFieldNomeMedico.setText(medico.getNome());
+        jTextFieldTelefone.setText(medico.getTelefone().toString());
+    }
+               private void adicionar() {
+                  if (jTextFieldCRM.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Digite o CRM ","Erro.",
+							JOptionPane.ERROR_MESSAGE);
+            jTextFieldCRM.requestFocus();
+        }else if (jTextFieldNomeMedico.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Digite o nome do médico ", "Erro.",
+							JOptionPane.ERROR_MESSAGE);
+            jTextFieldNomeMedico.requestFocus();
+               }else if (jTextFieldTelefone.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Digite o telefone do médico ", "Erro.",
+							JOptionPane.ERROR_MESSAGE);
+            jTextFieldTelefone.requestFocus();
+              
+        }else {
+           
+            Medico medico = new Medico();
+            medico.setNome(jTextFieldNomeMedico.getText());
+            medico.setCrm(jTextFieldCRM.getText());
+            medico.setTelefone(jTextFieldTelefone.getText());
+      }
+                  MedicoDAO.gravar(medico);
+                              JOptionPane.showMessageDialog(
+                    this,
+                    "Médico gravado com sucesso!",
+                    "Médico",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            dispose();
+               }
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-
+        adicionar();
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
+                  
     private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldEmailActionPerformed
@@ -285,9 +326,9 @@ public class MedicoDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDataNascActionPerformed
 
-    private void jTextFieldNomePaciente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomePaciente2ActionPerformed
+    private void jTextFieldNomeMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeMedicoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNomePaciente2ActionPerformed
+    }//GEN-LAST:event_jTextFieldNomeMedicoActionPerformed
 
     private void jTextFieldTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneActionPerformed
         // TODO add your handling code here:
@@ -364,7 +405,7 @@ public class MedicoDialog extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldCodigo;
     private javax.swing.JFormattedTextField jTextFieldDataNasc;
     private javax.swing.JTextField jTextFieldEmail;
-    private javax.swing.JTextField jTextFieldNomePaciente2;
+    private javax.swing.JTextField jTextFieldNomeMedico;
     private javax.swing.JTextField jTextFieldTelefone;
     private java.awt.Panel panelBaixo;
     // End of variables declaration//GEN-END:variables
