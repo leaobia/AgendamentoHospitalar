@@ -4,19 +4,17 @@
  */
 package br.senai.sp.jandira.ui;
 
-<<<<<<< HEAD
-import br.senai.sp.jandira.dao.EspecialidadeDAO;
-=======
->>>>>>> d2e983141138895fcac90d2fef9dd810d69ad6d4
+
+
+
+
 import br.senai.sp.jandira.dao.MedicoDAO;
-import br.senai.sp.jandira.model.Especialidade;
+
 import br.senai.sp.jandira.model.Medico;
 import br.senai.sp.jandira.model.OperacaoEnum;
-<<<<<<< HEAD
-=======
-import br.senai.sp.jandira.model.PlanoDeSaude;
-import java.time.format.DateTimeFormatter;
->>>>>>> d2e983141138895fcac90d2fef9dd810d69ad6d4
+
+
+
 import javax.swing.JOptionPane;
 
 /**
@@ -287,13 +285,7 @@ public class MedicoDialog extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-         private void preencherFormulario() {
-        // NOI18N
 
-        jTextFieldCRM.setText(medico.getCrm().toString());
-        jTextFieldNomeMedico.setText(medico.getNome());
-        jTextFieldTelefone.setText(medico.getTelefone().toString());
-    }
                private void adicionar() {
                   if (jTextFieldCRM.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Digite o CRM ","Erro.",
@@ -329,30 +321,17 @@ public class MedicoDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-<<<<<<< HEAD
+
         if (operacao == OperacaoEnum.ADICIONAR) {
             adicionar();
         } else {
             editar();
         }
-=======
+
         adicionar();
->>>>>>> d2e983141138895fcac90d2fef9dd810d69ad6d4
+
     }//GEN-LAST:event_jButtonSalvarActionPerformed
-    private void adicionar() {
-        Medico novoMedico = new Medico();
-
-<<<<<<< HEAD
-        MedicoDAO.gravar(medico);
-
-        JOptionPane.showMessageDialog(
-                this,
-                "Medico gravado com sucesso!",
-                "Médicos",
-                JOptionPane.INFORMATION_MESSAGE);
-
-        dispose();
-    }
+    
 
     private void editar() {
         medico.setNome(jTextFieldNomeMedico.getText());
@@ -367,9 +346,9 @@ public class MedicoDialog extends javax.swing.JDialog {
         dispose();
 
     }
-=======
+
                   
->>>>>>> d2e983141138895fcac90d2fef9dd810d69ad6d4
+
     private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldEmailActionPerformed
