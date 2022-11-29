@@ -4,8 +4,8 @@
  */
 package br.senai.sp.jandira.ui;
 
-
 import br.senai.sp.jandira.dao.MedicoDAO;
+import br.senai.sp.jandira.model.Medico;
 import br.senai.sp.jandira.model.OperacaoEnum;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -22,6 +22,7 @@ public class MedicoPanel extends javax.swing.JPanel {
     public MedicoPanel() {
         initComponents();
         preencherTabela();
+        MedicoDAO.criarListaDeMedicos();
         ajustarTabela();
     }
         private int getLinha() {
@@ -105,18 +106,31 @@ public class MedicoPanel extends javax.swing.JPanel {
         System.out.println(linha
         );
         if (getLinha() != -1) {
-            //excluirMedico();
+            excluirMedico();
         } else {
             JOptionPane.showMessageDialog(this, "Por favor, selecione o médico que deseja excluir", "ATENÇÃO!", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_buttonExcluirMedicosActionPerformed
+        private void excluirMedico() {
+        int resposta = JOptionPane.showConfirmDialog(this,
+                "Você confirma a exclusão?",
+                "Muita atenção!",
+                JOptionPane.YES_NO_OPTION);
 
+        if (resposta == 0) {
+            String codigoStr = tableMedicos.getValueAt(linha, 0).toString();
+            Integer codigo = Integer.valueOf(codigoStr);
+            MedicoDAO.excluir(codigo);
+            preencherTabela();
+        }
+
+    }
     private void buttobEditarMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttobEditarMedicosActionPerformed
 
         // TODO add your handling code here:
         if (getLinha() != -1) {
-           // editarMedico();
+            editarMedico();
         } else {
             JOptionPane.showMessageDialog(this,
                 "Por favor, selecione o médico que deseja editar",
@@ -124,7 +138,14 @@ public class MedicoPanel extends javax.swing.JPanel {
                 JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_buttobEditarMedicosActionPerformed
-
+         private void editarMedico() {
+        Medico medico = MedicoDAO.getMedicos(getCodigo());
+          
+        MedicoDialog medicoDialog = new MedicoDialog(null, true, medico, OperacaoEnum.EDITAR);
+        medicoDialog.setVisible(true);
+        preencherTabela();
+        
+    } 
     private void buttonAdicionarMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarMedicosActionPerformed
 
        MedicoDialog medicoDialog = new MedicoDialog(null, true, OperacaoEnum.ADICIONAR);

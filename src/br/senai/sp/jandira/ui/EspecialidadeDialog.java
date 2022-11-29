@@ -162,7 +162,6 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
     private void preencherFormulario(){
    // NOI18N
         jTextFieldCodigo.setText(especialidade.getCodigo().toString());
-        jTextFieldDescEsp.setText(especialidade.getDescricao());
         jTextFieldNomeEspecialidade.setText(especialidade.getNome());
     }
     
