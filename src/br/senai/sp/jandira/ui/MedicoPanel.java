@@ -21,8 +21,8 @@ public class MedicoPanel extends javax.swing.JPanel {
      */
     public MedicoPanel() {
         initComponents();
-        preencherTabela();
         MedicoDAO.criarListaDeMedicos();
+        preencherTabela();
         ajustarTabela();
     }
         private int getLinha() {

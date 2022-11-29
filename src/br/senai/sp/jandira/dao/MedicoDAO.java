@@ -132,12 +132,14 @@ public class MedicoDAO {
                 Medico e;
                 e = new Medico(
                         Integer.valueOf(vetor[0]),
-                        vetor[1],
                         vetor[2],
+                        vetor[1],
                         vetor[3]);
 
                 // Guardar na lista de especialidades
                 medicos.add(e);
+                
+            
 
                 //ler a proxima linha 
                 linha = leitor.readLine();
@@ -153,7 +155,7 @@ public class MedicoDAO {
         String[] titulos = {"CÓDIGO", "CRM", "NOME DO MÉDICO", "TELEFONE"};
         String[][] dados = new String[medicos.size()][4];
 
-        System.out.println("************* " + medicos.size());
+        System.out.println("*************9999999999 " + medicos.size());
 
         int i = 0;
         for (Medico e : medicos) {
@@ -161,11 +163,12 @@ public class MedicoDAO {
             dados[i][1] = e.getCrm();
             dados[i][2] = e.getNome();
             dados[i][3] = e.getTelefone();
-
+           
             i++;
         }
         DefaultTableModel model = new DefaultTableModel(dados, titulos);
         return model;
+       
 
     }
 }
