@@ -13,6 +13,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -51,8 +54,10 @@ public class MedicoDAO {
     }
 
     public static Medico getMedicos(Integer codigo) { //READ
+        
         for (Medico e : medicos) {
-            if (e.getCodigo() == codigo) {
+            if (e.getCodigo().equals(codigo)) {
+                System.out.println(e.getMedicoSeparadoPorPontoEVirgula());
                 return e;
             }
         }
@@ -128,13 +133,21 @@ public class MedicoDAO {
                 // transformar os dados da linha em especialidade
                 //DateTimeFormatter barra = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 String[] vetor = linha.split(";");
+                //Tranformando as informaçoes da linha em especialidade]
+                String[] data = vetor[5].split("-"); //data
 
                 Medico e;
+                
+                       
                 e = new Medico(
+                        
                         Integer.valueOf(vetor[0]),
                         vetor[2],
                         vetor[1],
-                        vetor[3]);
+                        vetor[3],
+                        vetor[4],
+                        LocalDate.of(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0])));
+                
 
                 // Guardar na lista de especialidades
                 medicos.add(e);
@@ -153,16 +166,20 @@ public class MedicoDAO {
 
     public static DefaultTableModel getMedicoModel() {
         String[] titulos = {"CÓDIGO", "CRM", "NOME DO MÉDICO", "TELEFONE"};
-        String[][] dados = new String[medicos.size()][4];
+        String[][] dados = new String[medicos.size()][6];
 
         System.out.println("*************9999999999 " + medicos.size());
-
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        
         int i = 0;
         for (Medico e : medicos) {
             dados[i][0] = e.getCodigo().toString();
             dados[i][1] = e.getCrm();
             dados[i][2] = e.getNome();
             dados[i][3] = e.getTelefone();
+            dados[i][4] = e.getEmail();
+            dados[i][5] = e.getDataNasc().format(formato);
+          
            
             i++;
         }

@@ -59,6 +59,9 @@ public class MedicoDialog extends javax.swing.JDialog {
         jTextFieldCodigo.setText(medico.getCodigo().toString());
         jTextFieldCRM.setText(medico.getCrm());
         jTextFieldNomeMedico.setText(medico.getNome());
+        jTextFieldTelefone.setText(medico.getTelefone());
+        jTextFieldEmail.setText(medico.getEmail());
+        jTextFieldDataNasc.setText(medico.getDataNasc().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -383,7 +386,7 @@ public class MedicoDialog extends javax.swing.JDialog {
             editar();
         }
 
-        adicionar();
+      
 
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
