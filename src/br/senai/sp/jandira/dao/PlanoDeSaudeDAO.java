@@ -139,6 +139,7 @@ public class PlanoDeSaudeDAO {
                        
                 PlanoDeSaude e;
                 e = new PlanoDeSaude(
+                        
                         vetor[1],
                         vetor[2],
                         LocalDate.of(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2])),

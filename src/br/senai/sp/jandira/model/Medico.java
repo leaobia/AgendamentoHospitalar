@@ -113,10 +113,10 @@ public class Medico {
     }
         public String getMedicoSeparadoPorPontoEVirgula() {
         return this.codigo + ";"
-                + this.nome + ";"
-                + this.telefone + ";"
-                + this.email + ";"
                 + this.crm + ";"
+                + this.nome + ";"
+                + this.email + ";"
+                + this.telefone + ";"
                 + this.dataDeNascimento;
     }
 

@@ -117,8 +117,9 @@ public class MedicoDAO {
             if (e.getCodigo().equals(medicoAtualizado.getCodigo())) {
                 medicos.set(medicos.indexOf(e), medicoAtualizado);
                 break;
+                 
             }
-            atualizarArquivo();
+             atualizarArquivo();
         }
 
     }

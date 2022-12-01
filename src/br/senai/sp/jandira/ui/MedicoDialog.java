@@ -375,8 +375,8 @@ public class MedicoDialog extends javax.swing.JDialog {
             medico.setTelefone(jTextFieldTelefone.getText());
             medico.setEmail(jTextFieldEmail.getText());
             medico.setDataNasc(LocalDate.parse(jTextFieldDataNasc.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        }
-        MedicoDAO.atualizar(medico);
+            
+             MedicoDAO.atualizar(medico);
         JOptionPane.showMessageDialog(
                 this,
                 "Médico gravado com sucesso!",
@@ -384,6 +384,8 @@ public class MedicoDialog extends javax.swing.JDialog {
                 JOptionPane.INFORMATION_MESSAGE);
 
         dispose();
+        }
+       
        
     }
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
