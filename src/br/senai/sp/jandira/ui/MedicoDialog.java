@@ -4,16 +4,11 @@
  */
 package br.senai.sp.jandira.ui;
 
-
-
-
-
 import br.senai.sp.jandira.dao.MedicoDAO;
-
+import java.time.LocalDate;
 import br.senai.sp.jandira.model.Medico;
 import br.senai.sp.jandira.model.OperacaoEnum;
-
-
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.JOptionPane;
 
@@ -28,6 +23,7 @@ public class MedicoDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form MedicoDialog
+     *
      * @param parent
      * @param operacao
      */
@@ -286,36 +282,95 @@ public class MedicoDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-               private void adicionar() {
-                  if (jTextFieldCRM.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Digite o CRM ","Erro.",
-							JOptionPane.ERROR_MESSAGE);
+    private void adicionar() {
+        CharSequence s = " ";
+        
+        if (jTextFieldCRM.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Digite o CRM ", "Erro.",
+                    JOptionPane.ERROR_MESSAGE);
             jTextFieldCRM.requestFocus();
-        }else if (jTextFieldNomeMedico.getText().isEmpty()) {
+        } else if (jTextFieldNomeMedico.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Digite o nome do médico ", "Erro.",
-							JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.ERROR_MESSAGE);
             jTextFieldNomeMedico.requestFocus();
-               }else if (jTextFieldTelefone.getText().isEmpty()) {
+        } else if (jTextFieldTelefone.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Digite o telefone do médico ", "Erro.",
-							JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.ERROR_MESSAGE);
             jTextFieldTelefone.requestFocus();
-              
-        }else {
-           
+        } else if (jTextFieldEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Digite o email do médico ", "Erro.",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldEmail.requestFocus();
+        } else if (jTextFieldDataNasc.getText().contains(s) ==true) {
+            JOptionPane.showMessageDialog(this, "Digite a data de nascimento médico ", "Erro.",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldDataNasc.requestFocus();
+
+        } else {
+
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             Medico medico = new Medico();
             medico.setNome(jTextFieldNomeMedico.getText());
             medico.setCrm(jTextFieldCRM.getText());
             medico.setTelefone(jTextFieldTelefone.getText());
-      }
-                  MedicoDAO.gravar(medico);
-                              JOptionPane.showMessageDialog(
-                    this,
-                    "Médico gravado com sucesso!",
-                    "Médico",
-                    JOptionPane.INFORMATION_MESSAGE);
+            medico.setEmail(jTextFieldEmail.getText());
+            medico.setDataNasc(LocalDate.parse(jTextFieldDataNasc.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        }
+        MedicoDAO.gravar(medico);
+        JOptionPane.showMessageDialog(
+                this,
+                "Médico gravado com sucesso!",
+                "Médico",
+                JOptionPane.INFORMATION_MESSAGE);
 
-            dispose();
-               }
+        dispose();
+    }
+
+    
+   
+    private void editar(){
+        CharSequence s = " ";
+                if (jTextFieldCRM.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Digite o CRM ", "Erro.",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldCRM.requestFocus();
+        } else if (jTextFieldNomeMedico.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Digite o nome do médico ", "Erro.",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldNomeMedico.requestFocus();
+        } else if (jTextFieldTelefone.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Digite o telefone do médico ", "Erro.",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldTelefone.requestFocus();
+        } else if (jTextFieldEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Digite o email do médico ", "Erro.",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldEmail.requestFocus();
+        } else if (jTextFieldDataNasc.getText().contains(s) == true) {
+            JOptionPane.showMessageDialog(this, "Digite a data de nascimento médico neste formato :(##) #####-####.\" ", "Erro.",
+                    JOptionPane.ERROR_MESSAGE);
+            jTextFieldDataNasc.requestFocus();
+
+        } else {
+
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            Medico medico = new Medico();
+            medico.setNome(jTextFieldNomeMedico.getText());
+            medico.setCrm(jTextFieldCRM.getText());
+            medico.setTelefone(jTextFieldTelefone.getText());
+            medico.setEmail(jTextFieldEmail.getText());
+            medico.setDataNasc(LocalDate.parse(jTextFieldDataNasc.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        }
+        MedicoDAO.atualizar(medico);
+        JOptionPane.showMessageDialog(
+                this,
+                "Médico gravado com sucesso!",
+                "Médico",
+                JOptionPane.INFORMATION_MESSAGE);
+
+        dispose();
+       
+    }
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
@@ -331,23 +386,9 @@ public class MedicoDialog extends javax.swing.JDialog {
         adicionar();
 
     }//GEN-LAST:event_jButtonSalvarActionPerformed
-    
 
-    private void editar() {
-        medico.setNome(jTextFieldNomeMedico.getText());
 
-        MedicoDAO.atualizar(medico);
-        JOptionPane.showMessageDialog(
-                this,
-                "Medico editado com sucesso!",
-                "Médicos",
-                JOptionPane.INFORMATION_MESSAGE);
 
-        dispose();
-
-    }
-
-                  
 
     private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
         // TODO add your handling code here:

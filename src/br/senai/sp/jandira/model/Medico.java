@@ -53,6 +53,14 @@ public class Medico {
     public String getNome() {
         return nome;
     }
+    
+       public void setDataNasc(LocalDate dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
+    }
+
+    public LocalDate getDataNasc() {
+        return dataDeNascimento;
+    }
 
     public void setEspecialidade(Especialidade[] especialidade) {
         this.especialidades = especialidade;
@@ -103,9 +111,13 @@ public class Medico {
     public Integer getCodigo() {
         return codigo;
     }
-    public String getMedicoSeparadoPorPontoEVirgula() {
-        return this.codigo + ";" + this.crm + ";" + this.nome + ";"
-                + this.telefone;
+        public String getMedicoSeparadoPorPontoEVirgula() {
+        return this.codigo + ";"
+                + this.nome + ";"
+                + this.telefone + ";"
+                + this.email + ";"
+                + this.crm + ";"
+                + this.dataDeNascimento;
     }
 
 }
