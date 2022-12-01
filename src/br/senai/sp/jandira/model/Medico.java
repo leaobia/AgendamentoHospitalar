@@ -28,7 +28,7 @@ public class Medico {
         this.dataDeNascimento = dataDeNascimento;
         this.telefone = telefone;
         this.especialidades = especialidades;
-        gerarCodigo();
+        //gerarCodigo();
     } 
     
     public Medico(){

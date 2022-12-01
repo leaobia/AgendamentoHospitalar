@@ -23,7 +23,7 @@ public class MedicoPanel extends javax.swing.JPanel {
         initComponents();
         MedicoDAO.criarListaDeMedicos();
         preencherTabela();
-        ajustarTabela();
+        
     }
         private int getLinha() {
         linha = tableMedicos.getSelectedRow();
@@ -148,8 +148,10 @@ public class MedicoPanel extends javax.swing.JPanel {
     } 
     private void buttonAdicionarMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarMedicosActionPerformed
 
-       MedicoDialog medicoDialog = new MedicoDialog(null, true, OperacaoEnum.ADICIONAR);
-        medicoDialog.setVisible(true);
+                MedicoDialog medicosdialog = new MedicoDialog(null,
+                true,
+                OperacaoEnum.ADICIONAR);
+        medicosdialog.setVisible(true);
         preencherTabela();
 
         // TODO add your handling code here:
@@ -165,10 +167,9 @@ public class MedicoPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
      private void preencherTabela() {
 
-
+        
         tableMedicos.setModel(MedicoDAO.getMedicoModel());
         ajustarTabela();
-
         tableMedicos.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
     }
 

@@ -41,7 +41,7 @@ public class MedicoDAO {
                     PATH,
                     StandardOpenOption.APPEND,
                     StandardOpenOption.WRITE);
-//            escritor.write(e.getMedicoSeparadoPorPontoEVirgula());
+            escritor.write(e.getMedicoSeparadoPorPontoEVirgula());
             escritor.newLine();
             escritor.close();
         } catch (IOException erro) {
@@ -138,7 +138,7 @@ public class MedicoDAO {
 
                 Medico e;
                 
-                       
+//Integer codigo ,String nome, String crm, String telefone, String email,LocalDate dataDeNascimento                       
                 e = new Medico(
                         
                         Integer.valueOf(vetor[0]),
@@ -146,7 +146,7 @@ public class MedicoDAO {
                         vetor[1],
                         vetor[3],
                         vetor[4],
-                        LocalDate.of(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0])));
+                        LocalDate.of(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2])));
                 
 
                 // Guardar na lista de especialidades

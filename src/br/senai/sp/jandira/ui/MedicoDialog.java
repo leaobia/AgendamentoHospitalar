@@ -63,6 +63,15 @@ public class MedicoDialog extends javax.swing.JDialog {
         jTextFieldEmail.setText(medico.getEmail());
         jTextFieldDataNasc.setText(medico.getDataNasc().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
+    
+    private void preencherTitulo() {
+        TituloLabel.setText("Plano médico - " + operacao);
+        if (operacao == OperacaoEnum.EDITAR) {
+            IconeLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/edit32.png")));
+        } else {
+            IconeLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/plano-de-saude.png")));
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -318,8 +327,8 @@ public class MedicoDialog extends javax.swing.JDialog {
             medico.setTelefone(jTextFieldTelefone.getText());
             medico.setEmail(jTextFieldEmail.getText());
             medico.setDataNasc(LocalDate.parse(jTextFieldDataNasc.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        }
-        MedicoDAO.gravar(medico);
+            
+            MedicoDAO.gravar(medico);
         JOptionPane.showMessageDialog(
                 this,
                 "Médico gravado com sucesso!",
@@ -327,6 +336,9 @@ public class MedicoDialog extends javax.swing.JDialog {
                 JOptionPane.INFORMATION_MESSAGE);
 
         dispose();
+            
+        }
+        
     }
 
     
@@ -384,9 +396,7 @@ public class MedicoDialog extends javax.swing.JDialog {
             adicionar();
         } else {
             editar();
-        }
-
-      
+        }   
 
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
