@@ -108,8 +108,8 @@ public class MedicoDAO {
                 medicos.remove(e);
                 break;
             }
-            atualizarArquivo();
         }
+        atualizarArquivo();
     }
 
     public static void atualizar(Medico medicoAtualizado) { //UPDATE
@@ -119,8 +119,9 @@ public class MedicoDAO {
                 break;
                  
             }
-             atualizarArquivo();
+            
         }
+         atualizarArquivo();
 
     }
 

@@ -39,12 +39,14 @@ public class MedicoDialog extends javax.swing.JDialog {
         medico = e;
         preencherFormulario();
         this.operacao = operacao;
+        preencherTitulo();
     }
 
     public MedicoDialog(java.awt.Frame parent, boolean modal, OperacaoEnum operacao) {
         super(parent, modal);
         initComponents();
         this.operacao = operacao;
+        preencherTitulo();
 
     }
 
@@ -65,7 +67,7 @@ public class MedicoDialog extends javax.swing.JDialog {
     }
     
     private void preencherTitulo() {
-        TituloLabel.setText("Plano médico - " + operacao);
+        TituloLabel.setText("MÉDICO - " + operacao);
         if (operacao == OperacaoEnum.EDITAR) {
             IconeLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/edit32.png")));
         } else {
@@ -369,7 +371,7 @@ public class MedicoDialog extends javax.swing.JDialog {
         } else {
 
             DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            Medico medico = new Medico();
+           
             medico.setNome(jTextFieldNomeMedico.getText());
             medico.setCrm(jTextFieldCRM.getText());
             medico.setTelefone(jTextFieldTelefone.getText());
@@ -384,9 +386,7 @@ public class MedicoDialog extends javax.swing.JDialog {
                 JOptionPane.INFORMATION_MESSAGE);
 
         dispose();
-        }
-       
-       
+        }      
     }
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         dispose();

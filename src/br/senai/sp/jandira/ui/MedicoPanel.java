@@ -141,7 +141,10 @@ public class MedicoPanel extends javax.swing.JPanel {
          private void editarMedico() {
         Medico medico = MedicoDAO.getMedicos(getCodigo());
           
-        MedicoDialog medicoDialog = new MedicoDialog(null, true, medico, OperacaoEnum.EDITAR);
+        MedicoDialog medicoDialog = new MedicoDialog(null, 
+                true, 
+                medico,
+                OperacaoEnum.EDITAR);
         medicoDialog.setVisible(true);
         preencherTabela();
         

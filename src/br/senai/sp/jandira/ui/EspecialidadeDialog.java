@@ -41,6 +41,7 @@ public class EspecialidadeDialog extends javax.swing.JDialog {
         this.operacao = operacao;
         preencherTitulo();
         
+        
     }
 
     /**
