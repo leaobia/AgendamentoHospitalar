@@ -49,6 +49,7 @@ public class MedicoDialog extends javax.swing.JDialog {
         initComponents();
         this.operacao = operacao;
         preencherTitulo();
+        adicionandoNaList();
 
     }
 
@@ -466,6 +467,7 @@ public class MedicoDialog extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
  private void adicionandoNaList(){ 
         jListEspecialidadesDoMedicoo.setModel(EspecialidadeDAO.getListaEspecialidade());
+        
 }
 
 }

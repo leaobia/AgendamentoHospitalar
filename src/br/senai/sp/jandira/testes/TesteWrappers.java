@@ -15,38 +15,38 @@ public class TesteWrappers {
         Double x = 2.9;
 
         ArrayList<Especialidade> especialidades = new ArrayList<>();
-
+//
         Especialidade e1 = new Especialidade("Cardiologia");
-//		e1.setNome("Cardiologia");
-        e1.setDescricao("Cuida do coração");
-
+		e1.setNome("Cardiologia");
+     //   e1.setDescricao("Cuida do coração");
+//
         Especialidade e2 = new Especialidade("Gastroenterologia");
-//		e2.setNome("Gastroenterologia");
+		e2.setNome("Gastroenterologia");
         e2.setDescricao("Cuida da sua barriguinha");
-
+////
         especialidades.add(e1);
-        especialidades.add(e2);
-
+       especialidades.add(e2);
+////
         Especialidade e3 = new Especialidade();
-        e3.setNome("Fisioterapia");
-        e3.setDescricao("Cuida da sua dor nas costas");
-
+       e3.setNome("Fisioterapia");
+       e3.setDescricao("Cuida da sua dor nas costas");
+////
         especialidades.add(e3);
-
+////
         Especialidade e4 = new Especialidade();
         e4.setNome("Clinico Geral");
-        e4.setDescricao("Sabe de tudo um pouquiho");
-
-        //Especialidade[] especialidades = {e1, e2, e3, e4};
+       e4.setDescricao("Sabe de tudo um pouquiho");
+////
+       // Especialidade[] especialidades = {e1, e2, e3, e4};
         Especialidade e5 = new Especialidade();
-        e5.setNome("Pediatria");
+       e5.setNome("Pediatria");
         e5.setDescricao("cuida das criancinhas");
-
-        //especialidades[4] = e5;
+////
+    //  especialidades[4] = e5;
         especialidades.add(e4);
         especialidades.add(e5);
 
-        System.out.println(especialidades.size());
+       System.out.println(especialidades.size());
 
         //ArrayList<int> notas = new ArrayList<>(); isso não funcionará porque ele é um tipo primitivo
         ArrayList<Integer> notas = new ArrayList<>();

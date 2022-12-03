@@ -138,7 +138,7 @@ public class EspecialidadeDAO {
                         Integer.valueOf(vetor[0]));
 
                 // Guardar a especialidade na lista
-                especialidades.add(e);
+              //  especialidades.add(e);
 
                 // Ler a próxima linha 
                 linha = leitor.readLine();

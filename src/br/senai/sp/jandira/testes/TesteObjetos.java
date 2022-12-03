@@ -105,7 +105,7 @@ public class TesteObjetos {
         System.out.println(e4.getCodigo() + "-" + e4.getNome());
         System.out.println(e5.getCodigo() + "-" + e5.getNome());
 
-        ArrayList<Especialidade> especialidade = new ArrayList<>();
+       ArrayList<Especialidade> especialidade = new ArrayList<>();
         especialidade.add(e1);
         especialidade.add(e2);
         especialidade.add(e3);
