@@ -6,10 +6,15 @@ package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.dao.MedicoDAO;
+import br.senai.sp.jandira.model.Especialidade;
 import java.time.LocalDate;
 import br.senai.sp.jandira.model.Medico;
 import br.senai.sp.jandira.model.OperacaoEnum;
+import com.sun.source.tree.BreakTree;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 
 import javax.swing.JOptionPane;
 
@@ -261,6 +266,11 @@ public class MedicoDialog extends javax.swing.JDialog {
         jButtonAvancar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButtonAvancar.setText(">");
         jButtonAvancar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButtonAvancar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAvancarActionPerformed(evt);
+            }
+        });
         jPanelContent.add(jButtonAvancar);
         jButtonAvancar.setBounds(220, 240, 60, 50);
 
@@ -429,8 +439,23 @@ public class MedicoDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextFieldTelefoneActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
-        // TODO add your handling code here:
+         DefaultListModel<String> listaEspecialidadeMedico = new DefaultListModel<>();
+        for (Especialidade especialidade : EspecialidadeDAO.getEspecialidades()){
+            listaEspecialidadeMedico.removeElement( jListEspecialidadesDoMedicoo.getSelectedValue());
+        }
+        jListEspecialides.setModel(listaEspecialidadeMedico); 
+                                                  
+
+
     }//GEN-LAST:event_jButtonVoltarActionPerformed
+
+    private void jButtonAvancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvancarActionPerformed
+         DefaultListModel<String> listaEspecialidadeMedico = new DefaultListModel<>();
+        for (Especialidade especialidade : EspecialidadeDAO.getEspecialidades()){
+            listaEspecialidadeMedico.addElement( jListEspecialidadesDoMedicoo.getSelectedValue());
+        }
+        jListEspecialides.setModel(listaEspecialidadeMedico); 
+    }//GEN-LAST:event_jButtonAvancarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -466,8 +491,14 @@ public class MedicoDialog extends javax.swing.JDialog {
     private java.awt.Panel panelBaixo;
     // End of variables declaration//GEN-END:variables
  private void adicionandoNaList(){ 
-        jListEspecialidadesDoMedicoo.setModel(EspecialidadeDAO.getListaEspecialidade());
-        
+        jListEspecialidadesDoMedicoo.setModel(EspecialidadeDAO.getListaEspecialidade());       
 }
+
+ 
+// primeiro evento
+
+
+// segundo evento
+
 
 }

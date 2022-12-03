@@ -26,6 +26,7 @@ public class EspecialidadeDAO {
     excluir uma especialidade, etc.
      */
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
+    private  String nome = new String();
 
     public static void gravar(Especialidade e) { //CREATE
         especialidades.add(e);
@@ -47,6 +48,7 @@ public class EspecialidadeDAO {
     public static ArrayList<Especialidade> getEspecialidades() { //READ
         return especialidades;
     }
+ 
 
     public static Especialidade getEspecialidade(Integer codigo) { //READ
         for (Especialidade e : especialidades) {
