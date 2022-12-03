@@ -28,8 +28,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PlanoDeSaudeDAO {
 
-    private final static String URL = "C:\\Users\\22282176\\JAVA ARQUIVO\\PlanoDeSaude.txt";
-    private final static String URL_TEMP = "C:\\Users\\22282176\\JAVA ARQUIVO\\PlanoDeSaude-temp.txt";
+    private final static String URL = "C:\\Users\\bianc\\JAVA ARQUIVO\\PlanoDeSaude.txt";
+    private final static String URL_TEMP = "C:\\Users\\bianc\\JAVA ARQUIVO\\PlanoDeSaude-temp.txt";
     private final static Path PATH = Paths.get(URL);
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);
 

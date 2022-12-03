@@ -10,13 +10,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDAO {
 
-    private final static String URL = "C:\\Users\\22282176\\JAVA ARQUIVO\\Especialidade.txt";
-    private final static String URL_TEMP = "C:\\Users\\22282176\\JAVA ARQUIVO\\Especialidade-temp.txt";
+    private final static String URL = "C:\\Users\\bianc\\JAVA ARQUIVO\\Especialidade.txt";
+    private final static String URL_TEMP = "C:\\Users\\bianc\\JAVA ARQUIVO\\Especialidade-temp.txt";
     private final static Path PATH = Paths.get(URL);
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);
     /*
@@ -167,6 +168,13 @@ public class EspecialidadeDAO {
         DefaultTableModel model = new DefaultTableModel(dados, titulos);
         return model;
 
+    }
+      public static DefaultListModel<String> getListaEspecialidade(){
+        DefaultListModel<String> listaEspecialidade = new DefaultListModel<>();
+        for (Especialidade especialidade : especialidades){
+            listaEspecialidade.addElement(especialidade.getCodigo()+ " - "+ especialidade.getNome());
+        }
+        return listaEspecialidade;
     }
 
 }

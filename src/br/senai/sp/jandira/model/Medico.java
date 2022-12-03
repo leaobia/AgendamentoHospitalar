@@ -1,25 +1,25 @@
 package br.senai.sp.jandira.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Medico {
 
     //atributos
     private static int contador = 0;
     private String nome;
-    private Especialidade[] especialidades;
+    private ArrayList<Especialidade> especialidades;
     private String telefone;
     private String email;
     private String crm;
     private LocalDate dataDeNascimento;
     private Integer codigo;
-    
-     // Criação dos Construtores \\
-    
-    public Medico(Integer codigo ,String nome, String crm, String telefone,
-            String email,LocalDate dataDeNascimento
-            ){
-        
+
+    // Criação dos Construtores \\
+    public Medico(Integer codigo, String nome, String crm, String telefone,
+            String email, LocalDate dataDeNascimento
+    ) {
+
         this.codigo = codigo;
         this.contador = codigo;
         this.nome = nome;
@@ -27,23 +27,23 @@ public class Medico {
         this.email = email;
         this.dataDeNascimento = dataDeNascimento;
         this.telefone = telefone;
-        this.especialidades = especialidades;
+
         //gerarCodigo();
-    } 
-    
-    public Medico(){
-        gerarCodigo();
-        
     }
-    public Medico(Integer codigo, String nome, String crm, String telefone){
+
+    public Medico() {
+        gerarCodigo();
+
+    }
+
+    public Medico(Integer codigo, String nome, String crm, String telefone) {
         this.codigo = codigo;
         this.nome = nome;
         this.crm = crm;
         this.telefone = telefone;
         gerarCodigo();
-        
+
     }
-    
 
     //metodos
     public void setNome(String nome) {
@@ -53,21 +53,22 @@ public class Medico {
     public String getNome() {
         return nome;
     }
-    
-       public void setDataNasc(LocalDate dataDeNascimento) {
+
+    public ArrayList<Especialidade> getEspecialidades() {
+        return especialidades;
+
+    }
+
+    public void setEspecialidades(ArrayList<Especialidade> especialidades) {
+        this.especialidades = especialidades;
+    }
+
+    public void setDataNasc(LocalDate dataDeNascimento) {
         this.dataDeNascimento = dataDeNascimento;
     }
 
     public LocalDate getDataNasc() {
         return dataDeNascimento;
-    }
-
-    public void setEspecialidade(Especialidade[] especialidade) {
-        this.especialidades = especialidade;
-    }
-
-    public Especialidade[] getEspecialidade() {
-        return especialidades;
     }
 
     public void setTelefone(String telefone) {
@@ -93,7 +94,8 @@ public class Medico {
     public String getCrm() {
         return crm;
     }
-     private void gerarCodigo() {
+
+    private void gerarCodigo() {
         this.contador++;
         this.codigo = contador;
 
@@ -111,7 +113,12 @@ public class Medico {
     public Integer getCodigo() {
         return codigo;
     }
-        public String getMedicoSeparadoPorPontoEVirgula() {
+
+    public void set(int indexOf, Medico medicoAtualizado) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String getMedicoSeparadoPorPontoEVirgula() {
         return this.codigo + ";"
                 + this.crm + ";"
                 + this.nome + ";"

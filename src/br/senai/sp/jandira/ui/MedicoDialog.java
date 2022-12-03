@@ -4,6 +4,7 @@
  */
 package br.senai.sp.jandira.ui;
 
+import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.dao.MedicoDAO;
 import java.time.LocalDate;
 import br.senai.sp.jandira.model.Medico;
@@ -40,6 +41,7 @@ public class MedicoDialog extends javax.swing.JDialog {
         preencherFormulario();
         this.operacao = operacao;
         preencherTitulo();
+        adicionandoNaList();
     }
 
     public MedicoDialog(java.awt.Frame parent, boolean modal, OperacaoEnum operacao) {
@@ -93,9 +95,9 @@ public class MedicoDialog extends javax.swing.JDialog {
         jTextFieldNomeMedico = new javax.swing.JTextField();
         jTextFieldTelefone = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jListEspecialidesDoMedico = new javax.swing.JList<>();
+        jListEspecialides = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jListEspecialidades = new javax.swing.JList<>();
+        jListEspecialidadesDoMedicoo = new javax.swing.JList<>();
         jButtonCancelar = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
         jButtonAvancar = new javax.swing.JButton();
@@ -220,12 +222,12 @@ public class MedicoDialog extends javax.swing.JDialog {
         jPanelContent.add(jTextFieldTelefone);
         jTextFieldTelefone.setBounds(10, 150, 210, 30);
 
-        jScrollPane1.setViewportView(jListEspecialidesDoMedico);
+        jScrollPane1.setViewportView(jListEspecialides);
 
         jPanelContent.add(jScrollPane1);
         jScrollPane1.setBounds(290, 220, 190, 130);
 
-        jScrollPane2.setViewportView(jListEspecialidades);
+        jScrollPane2.setViewportView(jListEspecialidadesDoMedicoo);
 
         jPanelContent.add(jScrollPane2);
         jScrollPane2.setBounds(10, 220, 190, 130);
@@ -448,8 +450,8 @@ public class MedicoDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelListaDeEspecialidades;
     private javax.swing.JLabel jLabelNomeMédico;
     private javax.swing.JLabel jLabelTelefone1;
-    private javax.swing.JList<String> jListEspecialidades;
-    private javax.swing.JList<String> jListEspecialidesDoMedico;
+    private javax.swing.JList<String> jListEspecialidadesDoMedicoo;
+    private javax.swing.JList<String> jListEspecialides;
     private javax.swing.JPanel jPanelContent;
     private javax.swing.JPanel jPanelHeader;
     private javax.swing.JScrollPane jScrollPane1;
@@ -462,4 +464,8 @@ public class MedicoDialog extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldTelefone;
     private java.awt.Panel panelBaixo;
     // End of variables declaration//GEN-END:variables
+ private void adicionandoNaList(){ 
+        jListEspecialidadesDoMedicoo.setModel(EspecialidadeDAO.getListaEspecialidade());
+}
+
 }
