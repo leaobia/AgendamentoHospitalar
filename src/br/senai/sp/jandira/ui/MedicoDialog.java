@@ -441,20 +441,21 @@ public class MedicoDialog extends javax.swing.JDialog {
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
          DefaultListModel<String> listaEspecialidadeMedico = new DefaultListModel<>();
         for (Especialidade especialidade : EspecialidadeDAO.getEspecialidades()){
-            listaEspecialidadeMedico.removeElement( jListEspecialidadesDoMedicoo.getSelectedValue());
+            listaEspecialidadeMedico.removeElement( jListEspecialides.getSelectedValue());
+            break;
         }
         jListEspecialides.setModel(listaEspecialidadeMedico); 
                                                   
-
-
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonAvancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvancarActionPerformed
          DefaultListModel<String> listaEspecialidadeMedico = new DefaultListModel<>();
         for (Especialidade especialidade : EspecialidadeDAO.getEspecialidades()){
             listaEspecialidadeMedico.addElement( jListEspecialidadesDoMedicoo.getSelectedValue());
+            break;
         }
         jListEspecialides.setModel(listaEspecialidadeMedico); 
+        
     }//GEN-LAST:event_jButtonAvancarActionPerformed
 
     /**

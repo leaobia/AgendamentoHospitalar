@@ -26,10 +26,11 @@ public class EspecialidadeDAO {
     excluir uma especialidade, etc.
      */
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
-    private  String nome = new String();
+ 
 
     public static void gravar(Especialidade e) { //CREATE
         especialidades.add(e);
+        
 
         // GRAVAR EM ARQUIVO
         try {
