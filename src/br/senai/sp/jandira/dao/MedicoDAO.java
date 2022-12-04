@@ -4,6 +4,7 @@
  */
 package br.senai.sp.jandira.dao;
 
+import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.Medico;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,6 +18,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -32,6 +34,21 @@ public class MedicoDAO {
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);
 
     private static ArrayList<Medico> medicos = new ArrayList<>();
+    
+    // Criar segunda array list (essa vai ser somente as especialidades do médico
+    
+     public static ArrayList<Especialidade> apenasEspecialidadeDoMedico(String linha) {
+        String[] vetor = linha.split(";");
+
+        int codigoEspecialidade = 5;
+
+        ArrayList<Especialidade> codigos = new ArrayList<>();
+        while (codigoEspecialidade < vetor.length) {
+            codigos.add(EspecialidadeDAO.getEspecialidade(Integer.valueOf(vetor[codigoEspecialidade])));
+            codigoEspecialidade++;
+        }
+        return codigos;
+    }
 
     public static void gravar(Medico e) { //CREATE
         medicos.add(e);
@@ -190,4 +207,32 @@ public class MedicoDAO {
        
 
     }
+    
+    //Passo 2 - pegar a lista de especialidade do médico criando uma default list model
+    
+    public static DefaultListModel<Especialidade> getEspecialidadeMedicoModel() {
+
+        DefaultListModel<Especialidade> especialidadesLista = new DefaultListModel<Especialidade>();
+        
+        try {
+            
+            BufferedReader leitor = Files.newBufferedReader(PATH);
+
+            String linha = leitor.readLine();
+            
+            
+            for (Especialidade sequenciaListaMedico : apenasEspecialidadeDoMedico(linha)) {
+                especialidadesLista.addElement(sequenciaListaMedico);
+            }
+            
+            leitor.close();
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,
+                    "Ocorreu um erro ao adicionar da lista do médico");
+        }
+        return especialidadesLista;
+    }
+
 }

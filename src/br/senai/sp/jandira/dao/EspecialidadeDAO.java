@@ -26,7 +26,7 @@ public class EspecialidadeDAO {
     excluir uma especialidade, etc.
      */
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
- 
+    
 
     public static void gravar(Especialidade e) { //CREATE
         especialidades.add(e);
@@ -172,7 +172,7 @@ public class EspecialidadeDAO {
         return model;
 
     }
-      public static DefaultListModel<String> getListaEspecialidade(){
+      public static DefaultListModel<String> getListaEspecialidadeModel(){
         DefaultListModel<String> listaEspecialidade = new DefaultListModel<>();
         for (Especialidade especialidade : especialidades){
             listaEspecialidade.addElement(especialidade.getCodigo()+ " - "+ especialidade.getNome());

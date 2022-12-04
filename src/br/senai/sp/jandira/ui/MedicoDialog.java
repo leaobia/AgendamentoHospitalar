@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import br.senai.sp.jandira.model.Medico;
 import br.senai.sp.jandira.model.OperacaoEnum;
 import com.sun.source.tree.BreakTree;
+import java.awt.Component;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -26,6 +27,7 @@ public class MedicoDialog extends javax.swing.JDialog {
 
     private Medico medico;
     private OperacaoEnum operacao;
+    public static ArrayList<Especialidade> especialidadesDoMedico = new ArrayList<>();
 
     /**
      * Creates new form MedicoDialog
@@ -101,9 +103,9 @@ public class MedicoDialog extends javax.swing.JDialog {
         jTextFieldNomeMedico = new javax.swing.JTextField();
         jTextFieldTelefone = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jListEspecialides = new javax.swing.JList<>();
+        jListEspecialidadesDoMedico = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jListEspecialidadesDoMedicoo = new javax.swing.JList<>();
+        jListEspecialidades = new javax.swing.JList<>();
         jButtonCancelar = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
         jButtonAvancar = new javax.swing.JButton();
@@ -228,12 +230,12 @@ public class MedicoDialog extends javax.swing.JDialog {
         jPanelContent.add(jTextFieldTelefone);
         jTextFieldTelefone.setBounds(10, 150, 210, 30);
 
-        jScrollPane1.setViewportView(jListEspecialides);
+        jScrollPane1.setViewportView(jListEspecialidadesDoMedico);
 
         jPanelContent.add(jScrollPane1);
         jScrollPane1.setBounds(290, 220, 190, 130);
 
-        jScrollPane2.setViewportView(jListEspecialidadesDoMedicoo);
+        jScrollPane2.setViewportView(jListEspecialidades);
 
         jPanelContent.add(jScrollPane2);
         jScrollPane2.setBounds(10, 220, 190, 130);
@@ -439,23 +441,125 @@ public class MedicoDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextFieldTelefoneActionPerformed
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
-         DefaultListModel<String> listaEspecialidadeMedico = new DefaultListModel<>();
-        for (Especialidade especialidade : EspecialidadeDAO.getEspecialidades()){
-            listaEspecialidadeMedico.removeElement( jListEspecialides.getSelectedValue());
-            break;
+//         DefaultListModel<String> listaEspecialidadeMedico = new DefaultListModel<>();
+//        for (Especialidade especialidade : EspecialidadeDAO.getEspecialidades()){
+//            listaEspecialidadeMedico.removeElement( jListEspecialidadesDoMedico.getSelectedValue());
+//            break;
+//        }
+//        jListEspecialidadesDoMedico.setModel(listaEspecialidadeMedico); 
+//    if (jListEspecialidadesDoMedico.isSelectionEmpty() == false) {
+//
+//            ArrayList<String> novaListaMedicos = new ArrayList<>();
+//             
+//            int tamanho = jListEspecialidadesDoMedico.getModel().getSize();
+//           for (int i = 0; i > tamanho; i++) {
+//               novaListaMedicos.add(jListEspecialidadesDoMedico.getModel().getElementAt(i));
+//                novaListaMedicos.remove(jListEspecialidadesDoMedico.getSelectedValue());
+//            
+//                
+//                DefaultListModel<String> listaEspecialidadeMedicoModel = new DefaultListModel<>();
+//              
+//                for (String acaoBotaoVoltar : novaListaMedicos) {
+//                    listaEspecialidadeMedicoModel.addElement(acaoBotaoVoltar);
+//                }
+//                jListEspecialidadesDoMedico.setModel(listaEspecialidadeMedicoModel);
+//           
+//           }
+//            
+              if (jListEspecialidadesDoMedico.isSelectionEmpty() == false) {
+            ArrayList<String> novaListaMedicos = new ArrayList<>();
+            int tamanho = jListEspecialidadesDoMedico.getModel().getSize();
+            for (int i = 0; i < tamanho; i++) {
+                novaListaMedicos.add(jListEspecialidadesDoMedico.getModel().getElementAt(i));
+            }
+            novaListaMedicos.remove(jListEspecialidadesDoMedico.getSelectedValue());
+
+            DefaultListModel<String> listaEspecialidadeMedicoModel = new DefaultListModel<String>();
+            for (String acaoVoltar : novaListaMedicos) {
+                listaEspecialidadeMedicoModel.addElement(acaoVoltar);
+            }
+            jListEspecialidadesDoMedico.setModel(listaEspecialidadeMedicoModel);
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Não contem nenhuma especialidade na lista de médicos",
+                    "Editando Médico",
+                    JOptionPane.WARNING_MESSAGE, null);
         }
-        jListEspecialides.setModel(listaEspecialidadeMedico); 
+    
+    
+
+
                                                   
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jButtonAvancarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAvancarActionPerformed
-         DefaultListModel<String> listaEspecialidadeMedico = new DefaultListModel<>();
-        for (Especialidade especialidade : EspecialidadeDAO.getEspecialidades()){
-            listaEspecialidadeMedico.addElement( jListEspecialidadesDoMedicoo.getSelectedValue());
-            break;
-        }
-        jListEspecialides.setModel(listaEspecialidadeMedico); 
         
+//        for (Especialidade especialidade : EspecialidadeDAO.getEspecialidades()){
+//            listaEspecialidadeMedico.addElement( jListEspecialidadesDoMedicoo.getSelectedValue());
+//            break;
+//        }
+//        jListEspecialides.setModel(listaEspecialidadeMedico); 
+
+               
+//               String medicoEspecialidade = jListEspecialidades.getSelectedValue();
+//               if(jListEspecialidades.getSelectedIndex()==-1){
+//                   JOptionPane.showMessageDialog(jPanelContent, "Nenhum item selecionado", "Opps", 1);
+//               }else{
+//                   int[] value = jListEspecialidades.getSelectedIndices();
+//                   
+//                   listaEspecialidadeMedicoModel.addElement(medicoEspecialidade);
+//                   jListEspecialidadesDoMedico.setModel(listaEspecialidadeMedicoModel);
+//               
+//             if (EspecialidadeDAO.getListaEspecialidadeModel().getSize() !=0) {
+//                 for(int i=0;i<value.length;i++)
+//                   EspecialidadeDAO.getListaEspecialidadeModel().removeElementAt(value[i]);
+//                }
+             
+
+//                jListEspecialidadesDoMedicoo.setModel( EspecialidadeDAO.getListaEspecialidadeModel());
+//                
+//                listaEspecialidadeMedicoModel.addElement(medicoEspecialidade);
+//                jListEspecialides.setModel(listaEspecialidadeMedicoModel);
+//                
+//                if (EspecialidadeDAO.getListaEspecialidadeModel().getSize() !=0) {
+//                    EspecialidadeDAO.getListaEspecialidadeModel().removeElementAt(value);
+//                }
+//                jListEspecialidadesDoMedicoo.setModel( EspecialidadeDAO.getListaEspecialidadeModel());
+
+         if (jListEspecialidades.isSelectionEmpty() == false) {
+
+            ArrayList<String> novaLista = new ArrayList<>();
+             
+            int tamanho = jListEspecialidadesDoMedico.getModel().getSize();
+            for (int i = 0; i < tamanho; i++) {
+                novaLista.add(jListEspecialidadesDoMedico.getModel().getElementAt(i));
+            }
+
+            if (novaLista.contains(jListEspecialidades.getSelectedValue()) == false) {
+                novaLista.add(jListEspecialidades.getSelectedValue());
+                
+                DefaultListModel<String> listaEspecialidadeMedicoModel = new DefaultListModel<>();
+              
+                for (String acaoBotaoAvancar : novaLista) {
+                    listaEspecialidadeMedicoModel.addElement(acaoBotaoAvancar);
+                }
+                jListEspecialidadesDoMedico.setModel(listaEspecialidadeMedicoModel);
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "Você não pode adicionar uma especialidade já cadastrada!",
+                        " Médico",
+                        JOptionPane.WARNING_MESSAGE, null);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Selecione especialidade!",
+                    " Médico",
+                    JOptionPane.WARNING_MESSAGE, null);
+        }
+
+
+                
     }//GEN-LAST:event_jButtonAvancarActionPerformed
 
     /**
@@ -477,8 +581,8 @@ public class MedicoDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelListaDeEspecialidades;
     private javax.swing.JLabel jLabelNomeMédico;
     private javax.swing.JLabel jLabelTelefone1;
-    private javax.swing.JList<String> jListEspecialidadesDoMedicoo;
-    private javax.swing.JList<String> jListEspecialides;
+    private javax.swing.JList<String> jListEspecialidades;
+    private javax.swing.JList<String> jListEspecialidadesDoMedico;
     private javax.swing.JPanel jPanelContent;
     private javax.swing.JPanel jPanelHeader;
     private javax.swing.JScrollPane jScrollPane1;
@@ -492,8 +596,10 @@ public class MedicoDialog extends javax.swing.JDialog {
     private java.awt.Panel panelBaixo;
     // End of variables declaration//GEN-END:variables
  private void adicionandoNaList(){ 
-        jListEspecialidadesDoMedicoo.setModel(EspecialidadeDAO.getListaEspecialidade());       
+        jListEspecialidades.setModel(EspecialidadeDAO.getListaEspecialidadeModel());       
+        
 }
+
 
  
 // primeiro evento
