@@ -40,12 +40,14 @@ public class MedicoDAO {
      public static ArrayList<Especialidade> apenasEspecialidadeDoMedico(String linha) {
         String[] vetor = linha.split(";");
 
-        int codigoEspecialidade = 5;
+        int codigoEspecialidade = 6;
 
         ArrayList<Especialidade> codigos = new ArrayList<>();
+       
         while (codigoEspecialidade < vetor.length) {
             codigos.add(EspecialidadeDAO.getEspecialidade(Integer.valueOf(vetor[codigoEspecialidade])));
             codigoEspecialidade++;
+        
         }
         return codigos;
     }
@@ -165,7 +167,9 @@ public class MedicoDAO {
                         vetor[1],
                         vetor[3],
                         vetor[4],
-                        LocalDate.of(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2])));
+                        LocalDate.of(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2])),
+                        apenasEspecialidadeDoMedico(linha));
+                        
                 
 
                 // Guardar na lista de especialidades

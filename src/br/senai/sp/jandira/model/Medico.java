@@ -1,6 +1,8 @@
 package br.senai.sp.jandira.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
 
 public class Medico {
@@ -14,18 +16,22 @@ public class Medico {
     private String crm;
     private LocalDate dataDeNascimento;
     private Integer codigo;
+    private DateTimeFormatter formatador;
+    private String dataFormatada;
 
     // Criação dos Construtores \\
     public Medico(Integer codigo, String nome, String crm, String telefone,
-            String email, LocalDate dataDeNascimento
+            String email, LocalDate dataDeNascimento, ArrayList<Especialidade> especialidades
     ) {
-
+        formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        dataFormatada = dataDeNascimento.format(formatador);
         this.codigo = codigo;
         this.contador = codigo;
         this.nome = nome;
         this.crm = crm;
         this.email = email;
         this.dataDeNascimento = dataDeNascimento;
+        this.especialidades = especialidades;
         this.telefone = telefone;
 
         //gerarCodigo();
@@ -46,6 +52,14 @@ public class Medico {
     }
 
     //metodos
+    public String getDataFormatada() {
+        return dataFormatada;
+    }
+
+    public void setDataFormatada(String data) {
+        this.dataFormatada = data;
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -118,13 +132,22 @@ public class Medico {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public String converteArrayParaString(ArrayList<Especialidade> lista) {
+        ArrayList<String> codigos = new ArrayList<>();
+        for (Especialidade e : lista) {
+            codigos.add(e.getCodigo().toString());
+        }
+        return String.join(";", codigos);
+    }
+
     public String getMedicoSeparadoPorPontoEVirgula() {
         return this.codigo + ";"
                 + this.crm + ";"
                 + this.nome + ";"
                 + this.email + ";"
                 + this.telefone + ";"
-                + this.dataDeNascimento;
+                + this.dataDeNascimento
+                + ";" + converteArrayParaString(this.especialidades);
     }
 
 }
