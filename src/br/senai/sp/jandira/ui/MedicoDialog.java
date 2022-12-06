@@ -310,7 +310,15 @@ public class MedicoDialog extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    //evento do button salvar
+    private ArrayList<String> pegarEspecialidades(JList<String> lista) {
+        int tamanho = lista.getModel().getSize();
+        ArrayList<String> listaNova = new ArrayList();
+        for (int i = 0; i < tamanho; i++) {
+            listaNova.add(lista.getModel().getElementAt(i));
+        }
+        return listaNova;
+    }
     private void adicionar() {
         CharSequence s = " ";
         
@@ -344,6 +352,7 @@ public class MedicoDialog extends javax.swing.JDialog {
             medico.setTelefone(jTextFieldTelefone.getText());
             medico.setEmail(jTextFieldEmail.getText());
             medico.setDataNasc(LocalDate.parse(jTextFieldDataNasc.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            medico.setEspecialidades(pegarEspecialidades(jListEspecialidades));
             
             MedicoDAO.gravar(medico);
         JOptionPane.showMessageDialog(
