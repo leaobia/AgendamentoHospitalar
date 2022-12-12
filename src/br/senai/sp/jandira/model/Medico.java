@@ -132,18 +132,11 @@ public class Medico {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-//    public String converteArrayParaString(ArrayList<Especialidade> lista) {
-//        ArrayList<String> codigos = new ArrayList<>();
-//        for (Especialidade e : lista) {
-//            codigos.add(e.getCodigo().toString());
-//        }
-//        return String.join(";", codigos);
-//    }
     
         public String getCodigosEspecialidades() {
         String codigosEspecialidades = "";
         for (Especialidade especialidade : especialidades) {
-            codigosEspecialidades += especialidade.getCodigo() + ";";
+            codigosEspecialidades += especialidade.getCodigo() + "&";
         }
         return codigosEspecialidades;
     }
@@ -154,7 +147,7 @@ public class Medico {
                 + this.nome + ";"
                 + this.email + ";"
                 + this.telefone + ";"
-                + this.dataDeNascimento
+                + this.dataDeNascimento +";"
                 +getCodigosEspecialidades();
     }
 

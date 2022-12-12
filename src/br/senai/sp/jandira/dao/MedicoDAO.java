@@ -40,7 +40,7 @@ public class MedicoDAO {
      public static ArrayList<Especialidade> apenasEspecialidadeDoMedico(String linha) {
         String[] vetor = linha.split(";");
 
-        int codigoEspecialidade = 6;
+        int codigoEspecialidade = 20;
 
         ArrayList<Especialidade> codigos = new ArrayList<>();
        
@@ -189,7 +189,7 @@ public class MedicoDAO {
 
     public static DefaultTableModel getMedicoModel() {
         String[] titulos = {"CÓDIGO", "CRM", "NOME DO MÉDICO", "TELEFONE"};
-        String[][] dados = new String[medicos.size()][6];
+        String[][] dados = new String[medicos.size()][7];
 
         System.out.println("*************9999999999 " + medicos.size());
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -202,6 +202,7 @@ public class MedicoDAO {
             dados[i][3] = e.getTelefone();
             dados[i][4] = e.getEmail();
             dados[i][5] = e.getDataNasc().format(formato);
+            dados[i][6] = e.getCodigosEspecialidades();
           
            
             i++;

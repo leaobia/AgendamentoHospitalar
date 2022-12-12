@@ -311,14 +311,23 @@ public class MedicoDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     //evento do button salvar
-    private ArrayList<String> pegarEspecialidades(JList<String> lista) {
+    private ArrayList<Especialidade> pegarEspecialidades(JList<String> lista) {
         int tamanho = lista.getModel().getSize();
-        ArrayList<String> listaNova = new ArrayList();
+        
+        ArrayList<Especialidade> listaNova = new ArrayList();
         for (int i = 0; i < tamanho; i++) {
-            listaNova.add(lista.getModel().getElementAt(i));
+            int codigo = Integer.valueOf(lista.getModel().getElementAt(i).substring(0, 1));// 1 - Cardiologia
+            Especialidade e = EspecialidadeDAO.getEspecialidade(codigo);
+            listaNova.add(e);
         }
+        
+        String a = "Senai";
+        System.out.println(a.substring(1, 3));
+        
         return listaNova;
     }
+    
+       
     private void adicionar() {
         CharSequence s = " ";
         
@@ -352,7 +361,7 @@ public class MedicoDialog extends javax.swing.JDialog {
             medico.setTelefone(jTextFieldTelefone.getText());
             medico.setEmail(jTextFieldEmail.getText());
             medico.setDataNasc(LocalDate.parse(jTextFieldDataNasc.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-            medico.setEspecialidades(pegarEspecialidades(jListEspecialidades));
+            medico.setEspecialidades(pegarEspecialidades(jListEspecialidadesDoMedico));
             
             MedicoDAO.gravar(medico);
         JOptionPane.showMessageDialog(
@@ -401,6 +410,7 @@ public class MedicoDialog extends javax.swing.JDialog {
             medico.setTelefone(jTextFieldTelefone.getText());
             medico.setEmail(jTextFieldEmail.getText());
             medico.setDataNasc(LocalDate.parse(jTextFieldDataNasc.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            medico.setEspecialidades(pegarEspecialidades(jListEspecialidadesDoMedico));
             
              MedicoDAO.atualizar(medico);
         JOptionPane.showMessageDialog(
