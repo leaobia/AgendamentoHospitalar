@@ -204,7 +204,6 @@ public class MedicoDAO {
             dados[i][5] = e.getDataNasc().format(formato);
             dados[i][6] = e.getCodigosEspecialidades();
           
-           
             i++;
         }
         DefaultTableModel model = new DefaultTableModel(dados, titulos);

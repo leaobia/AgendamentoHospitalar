@@ -131,6 +131,7 @@ public class Medico {
     public void set(int indexOf, Medico medicoAtualizado) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+   
 
     
         public String getCodigosEspecialidades() {

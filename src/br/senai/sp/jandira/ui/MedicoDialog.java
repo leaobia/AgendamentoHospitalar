@@ -49,6 +49,7 @@ public class MedicoDialog extends javax.swing.JDialog {
         this.operacao = operacao;
         preencherTitulo();
         adicionandoNaList();
+        preencherEspecialidadesDoMedico();
     }
 
     public MedicoDialog(java.awt.Frame parent, boolean modal, OperacaoEnum operacao) {
@@ -326,7 +327,6 @@ public class MedicoDialog extends javax.swing.JDialog {
         
         return listaNova;
     }
-    
        
     private void adicionar() {
         CharSequence s = " ";
@@ -615,11 +615,29 @@ public class MedicoDialog extends javax.swing.JDialog {
     private java.awt.Panel panelBaixo;
     // End of variables declaration//GEN-END:variables
  private void adicionandoNaList(){ 
-        jListEspecialidades.setModel(EspecialidadeDAO.getListaEspecialidadeModel());       
-        
+        jListEspecialidades.setModel(EspecialidadeDAO.getListaEspecialidadeModel());         
 }
 
+ public ArrayList<String> getNomesEspecialidades(Medico medico) {
+        ArrayList<String> nomes = new ArrayList<>();
+        for (Especialidade especialidade : this.medico.getEspecialidades()) {
+            nomes.add(especialidade.getCodigo()+ " - "+ especialidade.getNome());
+        }
+        return nomes;
+    }
+ 
+private void preencherEspecialidadesDoMedico() {
+        
+            
 
+            DefaultListModel<String> medicoEspecialidades = new DefaultListModel<>();
+            for (String percorrer : getNomesEspecialidades(medico)) {
+                medicoEspecialidades.addElement(percorrer);
+            }
+            jListEspecialidadesDoMedico.setModel(medicoEspecialidades);
+        
+
+    }
  
 // primeiro evento
 
